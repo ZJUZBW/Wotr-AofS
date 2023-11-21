@@ -1,0 +1,598 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>README</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='正义之怒施法者入门和进阶手册'><span>【正义之怒】施法者入门和进阶手册</span></h1><p><strong><span>制作者：aaathl</span></strong><span>，持续更新中—— 有问题或补充可以在群里@我</span></p><p><span>正义之怒&amp;拥王者的交流群：一群487092507（目前只剩这个群了）、</span><del><span>二群：972953691（</span><strong><span>推荐</span></strong><span>，二群聊游戏比较多）</span></del><span>、</span><del><span>2.5群：191268357</span></del><span>、2.6群：570449412（新建的）、也可以加下面的“Owlcat游戏交流”频道（扫描二维码加入，主要讨论拥王者、正义之怒和未来要出的行商浪人）。</span></p><ul><li><p><strong><span>在国内很多网络环境，GITHUB网站访问都存在一定抽风现象，会时不时无法访问，通常刷新就可以解决。如果实在问题严重，</span><a href='https://steampp.net/'><span>Watt Toolkit</span></a><span> 可以帮到你。也可以下载整个说明文档（右上角绿色图标，CODE---Download ZIP），下载后解压，用浏览器或者记事本（可以自行下载更好的软件，善用搜索引擎，关键词“打开.md文件”）直接打开 README.md 这个文件即可</span></strong><span>。【特别注意！！！】</span></p></li><li><p><strong><span>GITHUB链接</span></strong></p><ul><li><a href='https://github.com/ZJUZBW/Wotr-BD_mod'><strong><span>完全洗点+MOD内容扩展情况下的队友职业RP加点思路</span></strong><span>（新！）</span></a></li><li><a href='https://github.com/ZJUZBW/Wotr-BD-LR'><span>正义之怒主角BD收录</span></a></li><li><a href='https://github.com/ZJUZBW/WotR-CA'><span>正义之怒物理职业测评</span></a></li><li><a href='https://github.com/ZJUZBW/-Wotr-BD-'><span>正义之怒原版队友BD收录</span></a></li><li><a href='https://github.com/ZJUZBW/Wotr-AofF'><span>拥王者&amp;正义之怒全专长测评</span></a></li><li><a href='https://github.com/ZJUZBW/Wotr-AofS'><span>正义之怒施法者入门和进阶手册</span></a></li><li><a href='https://github.com/ZJUZBW/Wotr-BUFF'><span>【新人向】属性、命中（AB）、防御（AC）和豁免的堆叠及法术对抗</span></a></li><li><a href='https://github.com/ZJUZBW/Wotr-WC'><span>【正义之怒不公平战报/攻略】【无佣兵无修改】魔能射手+全剧情队友</span></a></li><li><a href='https://github.com/nixgnot/WOTR-CONTENTS-MODS-CN'><span>【正义之怒】内容扩展型MOD收集计划</span></a><span>【大部分好用的MOD都在这里】</span></li></ul></li><li><p><strong><span>百度贴吧</span></strong></p><ul><li><a href='https://tieba.baidu.com/p/7974312458'><span>【正义之怒不公平战报】【无佣兵无修改】魔能射手+全剧情队友</span></a></li></ul></li><li><p><strong><span>哔哩哔哩</span></strong></p><ul><li><a href='https://www.bilibili.com/video/BV1Bu411C7xR'><span>【正义之怒不公平视频录制】【无修改】恶魔法师</span></a><span>（视频太麻烦了，目前就更新到第二章虫群女王之前，而且版本比较旧了，上面的文字战报思路和教学性更好，可以结合观看）</span></li></ul></li><li><p><strong><span>百度网盘</span></strong><span>：</span><a href='https://pan.baidu.com/s/15jx_JzQDWn4_kcxlLRdegg' target='_blank' class='url'>https://pan.baidu.com/s/15jx_JzQDWn4_kcxlLRdegg</a><span> 提取码：wotr，【注：不会实时更新】</span></p></li></ul><h2 id='目录'><span>目录</span></h2><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#正义之怒施法者入门和进阶手册">【正义之怒】施法者入门和进阶手册</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n40"><a class="md-toc-inner" href="#目录">目录</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n77"><a class="md-toc-inner" href="#前言">前言</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n78"><a class="md-toc-inner" href="#一个完美的全能施法者需要具备什么能力">一个完美的全能施法者，需要具备什么能力</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n103"><a class="md-toc-inner" href="#法术作用机制">法术作用机制</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n116"><a class="md-toc-inner" href="#法术分类">法术分类</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n134"><a class="md-toc-inner" href="#法术学派选择">法术学派选择</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n157"><a class="md-toc-inner" href="#准备施法者如何准备法术">准备施法者如何准备法术</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n183"><a class="md-toc-inner" href="#举例">举例</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n222"><a class="md-toc-inner" href="#法术推荐">法术推荐</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n223"><a class="md-toc-inner" href="#一环">一环</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n275"><a class="md-toc-inner" href="#二环">二环</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n367"><a class="md-toc-inner" href="#三环">三环</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n430"><a class="md-toc-inner" href="#四环">四环</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n492"><a class="md-toc-inner" href="#五环">五环</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n539"><a class="md-toc-inner" href="#六环">六环</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n591"><a class="md-toc-inner" href="#七环">七环</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n638"><a class="md-toc-inner" href="#八环">八环</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n685"><a class="md-toc-inner" href="#九环">九环</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n737"><a class="md-toc-inner" href="#关于dc如何合理堆叠">关于DC如何合理堆叠</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n740"><a class="md-toc-inner" href="#基础dc的构成">基础DC的构成</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n825"><a class="md-toc-inner" href="#等效dc"><strong>等效DC</strong></a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n846"><a class="md-toc-inner" href="#法术伤害如何堆叠">法术伤害如何堆叠</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n861"><a class="md-toc-inner" href="#法术伤害构成">法术伤害构成</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n864"><a class="md-toc-inner" href="#伤害构成">伤害构成</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n878"><a class="md-toc-inner" href="#造成伤害的法术分类">造成伤害的法术分类</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n889"><a class="md-toc-inner" href="#每环常用的主力伤害法术">每环常用的主力伤害法术</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n911"><a class="md-toc-inner" href="#序章第一章和第二章的伤害法术">序章、第一章和第二章的伤害法术</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n920"><a class="md-toc-inner" href="#第三章的主力伤害法术">第三章的主力伤害法术</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n958"><a class="md-toc-inner" href="#主力伤害法术的最终伤害">主力伤害法术的最终伤害</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n986"><a class="md-toc-inner" href="#施法者等级怎么堆">施法者等级怎么堆</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1008"><a class="md-toc-inner" href="#法术穿透怎么堆">法术穿透怎么堆</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1029"><a class="md-toc-inner" href="#施法者职业锐评">施法者职业锐评</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1031"><a class="md-toc-inner" href="#不考虑神话道途学派和领域默认选择最高优化版本）">不考虑神话道途（学派和领域默认选择最高优化版本）</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1034"><a class="md-toc-inner" href="#神话道途与施法者组合以后的强度">神话道途与施法者组合以后的强度</a></span></p></div><ul><li><p><a href='#一个完美的全能施法者需要具备什么能力'><span>完美的全能施法者需要具备什么能力？</span></a></p></li><li><p><a href='#法术作用机制'><span>法术作用机制</span></a></p></li><li><p><a href='#法术分类'><span>法术分类</span></a></p></li><li><p><a href='#法术学派选择'><span>法术学派选择</span></a></p></li><li><p><a href='#准备施法者如何准备法术'><span>准备施法者如何准备法术</span></a></p></li><li><p><a href='#法术推荐'><span>法术推荐</span></a></p></li><li><p><a href='#关于dc如何合理堆叠'><span>DC如何堆</span></a></p><ul><li><a href='#基础dc的构成'><span>基础DC的构成</span></a></li><li><a href='#等效dc'><span>等效DC</span></a></li></ul></li><li><p><a href='#法术伤害如何堆叠'><span>法术伤害如何堆</span></a></p><ul><li><a href='#法术伤害构成'><span>法术伤害构成</span></a></li><li><a href='#每环常用的主力伤害法术'><span>每环常用的主力伤害法术</span></a></li><li><a href='#主力伤害法术的最终伤害'><span>主力伤害法术的最终伤害</span></a></li></ul></li><li><p><a href='#施法者等级怎么堆'><span>施法者等级如何堆，后期常驻轮级法术的办法</span></a></p></li><li><p><a href='#法术穿透怎么堆'><span>法术穿透如何堆</span></a></p></li><li><p><a href='#施法者职业锐评'><span>施法者职业锐评</span></a></p></li></ul><h2 id='前言'><span>前言</span></h2><h2 id='一个完美的全能施法者需要具备什么能力'><span>一个完美的全能施法者，需要具备什么能力</span></h2><ol start='' ><li><strong><span>最最最重要的</span></strong><span>，玩九环施法者就别拿弩射箭，别惦记那个近程射击和精准射击了，就算挂机不动也比射箭摆烂强啊，这样好歹随时都有机会释放法术；而且你觉得拿弩能射得中人，能有伤害吗？</span></li><li><strong><span>Y键查看怪物能力！！！多看看敌人的属性面板和多动动脑子，法术考验的是解题能力</span></strong><span>：别对着鬼火用火球术（人家免疫法术啊，只吃法术飞弹），别对着魔狮施法（他直接次元门贴脸），别对着蜘蛛用蛛网术，别对免疫震慑的亡灵用音鸣爆... ...不看属性面板，最后还抱怨：“哎呀敌人免疫那么多，法师太难了。。。”</span></li><li><strong><span>超越职业等级的施法者等级</span></strong><span>：法术大师的法术聚能、研究法师的奥法源泉+强能魔法、专长里的法术专精，还有神话专长学派掌控、神话道途（巫妖、恶魔、御衡者和天使）、装备和BUFF给的施法者等级</span></li><li><strong><span>远超职业等级的法术穿透</span></strong><span>：法术穿透的基础值是法术的施法者等级，然后加上精灵魔力、结盟施法者、法术穿透、高等法术穿透、还有各种装备和buff的法术穿透，还有幸运领域/灵使道途的卓越魔法给的施法者等级检定双骰取高；说句不好听的，游戏里有这么多法术穿透的来源，如果法术穿透都堆不来，还是洗洗睡吧。</span></li><li><strong><span>全程稳定的造伤能力</span></strong><span>：</span><strong><span>无攻击检定的必中系</span></strong><span>，天命所归+&lt;低等强效权杖&gt;+&lt;初学者手套&gt;+&lt;力场之锋&gt;的增效飞弹（有护盾术的敌人极少，这一套在9CL的时候稳定造成70伤害）；</span><strong><span>射线系打接触</span></strong><span>，强效极效增效的地狱烈焰射线（配合灵魂之灾把伤害转为力场，破元素免疫和抗性）；</span><strong><span>无误伤的范围法术</span></strong><span>，强效极效增效的闪电链、烈焰风暴和风暴束，要搭配一些增伤的装备和道途能力；</span></li><li><strong><span>全能的控制/秒杀法术列表</span></strong><span>：是否魔免？，针对低意志（免疫心智？低强韧？异界生物？免疫俯卧？免疫麻痹？有行动自如？）、针对低反射（免疫俯卧？免疫麻痹？有行动自如？）、针对低强韧（免疫震慑？免疫变形？免疫毒素？免疫即死？免疫诅咒？）。</span></li><li><strong><span>高效的削弱敌人的法术</span></strong><span>：瞬发克敌+极效强效弱能术/吸能术（每个负向等级减1全豁免），可怖外表（敌人战栗就减2点全豁免），精通解除魔法（瞬发解除魔法和高等解除魔法，配合解法余波和暴力解法，至少等效4-12点的DC；巫妖道途有腐化魔法，御衡者道途有御衡者破敌和甄选归零）。</span></li><li><strong><span>远超敌人的先攻检定</span></strong><span>：如果战斗开始后，你第一个出手，控制/击杀了敌人；或者你最后一个出手，等敌人打完输出/释放法术，击杀/控制了你的队友以后才控制住/击杀他，结果天差地别。</span></li><li><strong><span>灵活的法术调用</span></strong><span>：“奥法契约”代表一次全法表施法（战斗中打开法术书切换法术，然后用奥法契约恢复，就相当于随时可以调用法表内的法术），法术大师满级足足有5次，灵活性完爆任何九环施法职业！</span></li><li><strong><span>一轮内多次施法打COMBO或者极限爆发的能力</span></strong><span>：灵使道途的灵动魔法（使用指定目标的法术的时候，可以分裂成两个；比如闪电链）、恶魔道途神话5的空奢魔相（用移动动作来释放标准动作的能力和法术）、御衡者道途神话8的高等御衡破敌（用移动动作来释放标准动作的能力和法术）、天使道途的迅捷流光（7环及以下的法术自带瞬发）、巫妖道途的魔法吞噬者（受到法术未击穿SR，则下一个法术瞬发）、反应施术的瞬发（先攻检定结束后，可以瞬发一个最高环-2的法术）、高等瞬发超魔权杖（最高瞬发9环）/德莱文帽子的瞬发（任意环位、且可以跟超魔权杖一起使用）、法术大师/共通学派的超魔能力。</span></li><li><strong><span>破免疫能力</span></strong><span>：这个主要是宗师之杖（第五章击杀刀匠以后掉落）和巫妖道途的夺命魔法，大家都差不多。而且无视法术免疫基本上就是给诡影杀手用的，其他法术用了宗师之杖，由于法术作用机制的BUG，也没办法无视免疫。术士亡灵血脉有将原本为类人生物的不死生物视为类人生物的能力，可以无视不死生物的种族免疫（由此可以对不死生物使用心智法术；目前还能对不死生物使用咆哮术等控制）。</span></li></ol><p><strong><span>以上条目中，1和2为玩法思路问题，3到10均跟职业选择、专长加点、神话加点和道途有关，5、6和7则额外涉及到法术选择和搭配。</span></strong></p><h2 id='法术作用机制'><span>法术作用机制</span></h2><p><span>一个法术要对敌人产生最终效果，最多需要5个步骤（按照先后顺序，如果不同法术的最终效果相同的话，所需步骤越少越好用）：</span></p><ol start='' ><li><span>攻击检定（AB+d20 对抗敌人的接触防御）/法术作用类别选择（比如你不能将免疫心智的构装体/亡灵作为心智类法术的目标）</span></li><li><span>施法者等级检定（法术的施法者等级+其他法术穿透调整值+d20 对抗敌人的法术抗力）</span></li><li><span>豁免检定（敌人对应豁免+d20 对抗法术的DC；根据法术描述，敌人豁免成功和失败会有不同效果）+虚体减半伤害（只有直接、神力、神圣、污邪、力场等伤害能对虚体造成全额伤害），两者叠乘。</span></li><li><span>被能量抗性/伤害减免削弱（这里主要是伤害性法术，法术的能量伤害会被能量抗性减免，法术的物理伤害会被DR减免）</span></li><li><span>敌人可能免疫法术效果（比如免疫火焰、免疫惑控、免疫心智之类）</span></li></ol><h2 id='法术分类'><span>法术分类</span></h2><p><span>根据造成的最终效果，可以将法术分为5个类。</span></p><p><strong><span>削弱型法术</span></strong><span>：削弱敌人数值，降低其强度的法术。负面状态包括恶心、战栗、目眩、负向等级、属性伤害、属性流失等。</span></p><blockquote><p><span>其实许多其他法术都是可以作为削弱型法术，比如DC低的角色使用的恐惧术（强制战栗一轮，-2ab，-2豁免），高DC角色对不免疫困难地形单位使用的纠缠术（纠缠-4敏捷等于-2AC-2反射豁免）。但典型的削弱型法术往往是群战的主宰，比如可怖外表（对30尺内敌人全部战栗，无法豁免，只能靠免疫）；对精英敌人的刺刀，比如强效超魔+极效超魔的弱能术（极长时间内获得6个负向等级，无法豁免只能免疫的-6AB-6豁免）和高等解除魔法（进行施法者等级检定以后，会解除敌人身上的魔法效果，实现削弱；搭配暴力解放和解法余波效果更佳）。</span></p></blockquote><p><strong><span>控制型法术</span></strong><span>：游戏里的控制效果非常复杂，仔细讲的话太多了。根据最终造成的负面效果来区分：</span></p><ul><li><span>最弱的控制效果为：纠缠（纠缠术造成移速减半的那种）、擒抱、困难地形；法术包括纠缠术、致病纠缠、蛛网术、焦油池（焦油效果可以当成强控制，但是很效果很矛盾）。</span></li><li><span>一般的控制效果为：纠缠（焦油这类将敌人定在原地的）、力竭/疲乏（这两个还有解除敌人狂暴、禁止敌人闯越和冲锋的作用，对抗牛头人、树人之类的挺好用）、目盲、恍惚、弱智；法术包括目盲术、闪光尘、神圣之惩、缓慢术、凛冬之触、弱智术、力竭波、疲乏波。</span></li><li><span>特殊的控制效果为：惊恐、眩晕、迷魂、俯卧、反胃、恶意变形、困惑、狂乱；法术包括虹彩图纹、催眠术、次等眩晕术、秩序之惩、油腻术、臭云术、恐惧术、恐吓术、恶意变形术、狂乱之歌、困惑术。</span></li><li><span>最强的控制效果为：麻痹、畏缩、睡眠/昏迷、震慑；法术包括光之锁链、灭顶悲恸、冰牢、群体冰牢、神威如岳、定身怪物、绞缚定身、睡眠术、沉眠术、腐烂幻象、七彩喷射、风暴束、咆哮术、高等咆哮术。敌人中了这些控制的时候跟死了也没区别了。</span></li></ul><p><strong><span>秒杀型法术</span></strong><span>：直接无视血量秒杀敌人的法术，法术包括魅影杀手、诡影杀手、放逐术、驱逐术、颂圣之语、虹光喷射等。</span></p><p><strong><span>伤害型法术</span></strong><span>：通过血量伤害来击杀敌人的法术，比如后期最强的塑能系法术风暴束（不考虑神话道途），既有最强控制状态还有无误伤的高额AOE伤害。</span></p><p><strong><span>支援型法术</span></strong><span>：给队友和自己提供各种属性、免疫、抗性、伤害减免、移动速度、体型变化和形态变化等一系列法术。在《</span><a href='https://github.com/ZJUZBW/Wotr-BUFF'><span>【新人进阶】属性、命中（AB）、防御（AC）和豁免的堆叠及法术对抗</span></a><span>》这里有介绍。</span></p><h2 id='法术学派选择'><span>法术学派选择</span></h2><p><strong><span>特别注意</span></strong><span>：要把法术学派跟法师职业能力的专精学派区别开来，选专精预言学派的法师完全可以把塑能、幻术作为主力法术。</span></p><p><span>由于法术学派禀赋、专长和装备限制，法师后期大概会点出一到两系的专攻+一系扩充战法（也可以不需要），圣使大概是一系专攻+一系扩充战法（也可以不需要）。至于自发施法者，由于法术可知的限制，不合书的话全程基本上就只能专攻/扩充一系+部分支援型法术，合书以后则根据专长数量可以点出一或两系专攻+一系扩充战法（也可以不需要）。专攻的法术学派，并不代表只能用这些学派，而是你打算用这些学派作为主力控制/输出手段，其他的学派的法术也是可以视情况随时调出来使用的。</span></p><p><span>由于法术学派的强度在正义之怒里天差地别，这里我直接列出职业的几个强势学派玩法，一个完整的全能法师需要分别准备好对抗强韧、反射、意志的法术，而且要考虑到敌人的免疫情况。</span></p><p><strong><span>法师的法术学派介绍</span></strong></p><ul><li><span>塑能：</span><strong><span>主要是对抗强韧和反射，少部分对抗意志，还有大部分伤害法术跟射线</span></strong><span>。风暴束/咆哮术系列</span><strong><span>对抗强韧</span></strong><span>造成震慑的，冰封之牢系列</span><strong><span>对抗反射</span></strong><span>造成麻痹的，热风术</span><strong><span>对抗强韧</span></strong><span>造成俯卧的，射线和对抗反射的AOE伤害法术，还有虹光喷射之类AOE摸奖秒杀的，如果扩表拿了颂圣还能用来无视豁免直接造成目盲和麻痹（需要CL高才行）。</span></li><li><span>惑控：</span><strong><span>惑控系全都是对抗意志，都有心智标签、决大部分是胁迫子学派、极少部分是魅惑子学派</span></strong><span>。睡眠术/沉眠术/梦境护幕之类造成睡眠的，狂笑术之类造成俯卧的，英雄气概系列用来加buff的，灭顶悲恸/神威如岳等造成畏缩的，定身怪物系列造成麻痹的，困惑术造成困惑，迷醉波造成震慑，还有律令系无视豁免直接控制/秒杀的（一般用不到，因为律令系对血量要求太苛刻了）。</span></li><li><span>幻术：</span><strong><span>幻术系跟惑控系差不多都需要对抗意志，大部分有心智标签，但是幻术系一般还要对抗强韧才能造成完整效果</span></strong><span>。所以</span><strong><span>大部分情况所需求的DC要远比惑控系高</span></strong><span>。魅影/诡影为代表的秒杀，七彩喷射前期超级控制（震慑、目盲、俯卧），虹彩图纹造成迷魂，迷幻图纹造成昏迷/震慑/困惑，腐烂幻象造成昏迷（不属于魔法睡眠效应），高等隐形术/移位术/渐隐术也是一等一的辅助BUFF，至于阴影系法术目前都是用被模拟法术学派的DC（不实用，可能适合术士吧）。</span></li><li><span>防护：</span><strong><span>防护系主要是上防护BUFF，辅有对抗意志的驱逐术/放逐术和对抗施法者等级的解除魔法/高等解除魔法等强力法术。</span></strong></li><li><span>咒法：</span><strong><span>咒法系主要是物理效果，特点是无视法术抗力（即无视法术免疫）</span></strong><span>。主要用的就是油腻术对抗反射造成俯卧，闪光尘对抗意志造成目盲，次元坑系法术对抗反射和运动/灵巧来分割战场，光之锁链对抗反射造成麻痹，津波对抗强韧和运动/灵巧来造成俯卧和位移，臭云术对抗强韧造成反胃，次元门/空间穿行进行位移，酸雾术对抗远程攻击加AC，还有法师护甲和水幕拒敌等自保BUFF。</span></li><li><span>变化：变化系主要是加BUFF，辅有缓慢术对抗意志造成恍惚、恶意变形术对抗强韧使敌人变成无法攻击无法施法的狗（对不死生物特别强，近乎秒杀的效果）、焦油池对抗反射造成纠缠（这个相当于原地不动）等。</span></li><li><span>预言：预言系游戏里基本上没怎么做，有用的就是基本上都是BUFF：克敌机先、识破命门、（共用）识破隐形、（共用）真知术、预警。</span></li><li><span>死灵：死灵系总体来说地位很尴尬，多一个不多，少一个不少，但是部分法术还是挺好用的，比如恐吓术、延时恐惧术、强极效的吸能术/弱能术、操纵亡者（牧师的3环好用）。</span></li></ul><p><strong><span>圣使/先知</span></strong><span>：主要强度在塑能（音鸣爆、神圣之惩/秩序之怒、剑刃障壁、地狱烈焰射线、颂圣之语）、还有一些强力防护系（放逐术和驱逐术）和惑控系（高等命令术和神威如岳）、如果是诡计领域则还有一些强力幻术（魅影杀手和诡影杀手）。</span></p><h2 id='准备施法者如何准备法术'><span>准备施法者如何准备法术</span></h2><p><strong><span>说一下主角法师的法术位的分配原则好了</span></strong><span>。队友很难做到全能，所以会各有偏好，还需要根据队伍来准备法术，如果是菜刀队则会更多准备BUFF。</span></p><p><strong><span>以下为原则</span></strong><span>：</span></p><ul><li><span>第三章开始（根据难度，难度越低可以越早），最高环和次高环大部分法术位都得记控制/伤害性法术，然后才是支援法术。</span></li><li><span>DC高的，且造成秒杀、畏缩、昏迷、麻痹和震慑的这类法术多记多用，然后是俯卧、眩晕、纠缠（焦油）等，有高等隐形术之前目盲也是极好的控制。对策性法术少量记忆，或者靠奥法契约临时调用，以应对前面说的法术不太好生效或者被免疫的情况。反胃状态有BUG，目前被免疫毒素免疫，很菜。</span></li><li><span>削弱性法术是用来打配合的，打小怪只要DC够高，就不需要这样铺垫了，直接放强控/秒杀的法术即可。打豁免高的敌人可以用瞬发高解搭配双解法专长，然后再放强控/秒杀法术。</span></li><li><span>麻痹效果由于会被行动自如免疫，所以在法术书里的占比会随着敌人行动自如的普及而越来越低（主线有行动自如的敌人倒是不多），DLC1则敌人全员都是行动自如，可以完全放弃。</span></li><li><span>AOE控制优先于单体控，控制效果稳定的优于不稳定的（比如灭顶悲恸就比困惑术优先）；</span></li><li><span>无误伤或者自带&#39;甄选&#39;的优于不自带&#39;甄选&#39;的，像臭云+共用延缓毒发就是近似于&#39;甄选&#39;，或者用甄选超魔权杖。有误伤的AOE控制法术如酷热之风，也是得搭配甄选超魔权杖来记，除非自己学甄选超魔。</span></li><li><span>打控制的话，顽强超魔很关键，顽强超魔等于一个控制法术放了两次。</span></li><li><strong><span>伤害型法术，凑够至少增效强效以后才能用，强效极效增效以后才是完全体，所以要根据你的超魔权杖使用次数来记忆</span></strong><span>。比如前期只有6次低等强效超魔权杖，那增效魔法飞弹就记6个。比如法术大师14级有两次自带强效、两次法术聚能，配合噬心浪欲的6次极效超魔，性价比最高就是只记两发增效闪电链/增效地狱烈焰射线。</span><strong><span>用癫狂灾瘟来白嫖强极效也行，就是需要猴戏而且不太方便</span></strong><span>，除非你是天使圣使这种，增效强效审判风暴和增效强效审判之矢倒是可以拉满。</span></li><li><span>回合制可以准备一点群体次元门，把队友送到敌人面前，然后让队友整轮攻击。或者队友菜刀自己用瞬发次元门。</span></li><li><span>即时制的瞬发比回合制的瞬发要更重要一些，比如即时制的瞬发法术控制可以随时打断敌人的攻击、能力和法术。</span></li></ul><p><strong><span>注</span></strong><span>：以下介绍的支援法术只考虑给施法者自己加的BUFF，甄选超魔给持续时间为非立即的法术都算BUG（虽然敌人也会甄选剑刃障壁）。某些环的原法术不好用没关系，用超魔后的法术就行，所以说不玩超魔的根本还没玩懂施法者。</span></p><p><strong><span>注</span></strong><span>：像缓慢术、迟缓污泥和焦油池这种控制法术，不像放逐术/驱逐术/灭顶悲恸/咆哮术/冰牢这种法术一样，一旦命中瞬间瓦解敌人全部战斗力。这类控制法术就可以少记或者临时靠奥法契约调出来用，可以称其为临时调用的对策性法术。只有在常规强力法术没法应对的敌人比如不死生物（免疫心智、免疫麻痹、免疫震慑和眩晕）、免疫心智的集群（这种也可以用延时咆哮术控制）等时候才考虑。</span></p><h3 id='举例'><span>举例</span></h3><p><strong><span>顺便回复一下某个典型云观点</span></strong><span>：“那些比较花的BD，推荐的时候天花乱坠，遇到A打强韧，B打反射，C打意志，D用射线。但实际上，你不精确背诵每个地图有何种怪，有多少怪，那么你的法术就总是带错，根本不可能有那么多法术位让你每种都常备足够。”</span></p><ul><li><strong><span>答</span></strong><span>：典型的以偏概全，你确定你玩过法师吗？记的是对抗意志、反射、强韧的控制法术，AOE伤害法术和射线，一种用完了不会用另一种相对好用的法术顶上么？准备了最优解，所以只能用最优解来打咯？次优解被你吃掉了？还是说你觉得法师就准备一个“特解”：扩充战法幻术或者射线，遇到免疫的敌人就挂机，这样很强？</span></li><li><span>先用法师主角把游戏通关一遍再发表你的观点也不迟。自己玩不来也没玩过，为什么还能锐评一套成熟的玩法？这个游戏法系本身上手难，但是都有攻略了，从头开始照着玩到第三/四章，很快就熟练了；没攻略你玩1000小时都摸索不出来这套玩法，法术哪个好用哪个强都不知道呢，也就只能靠合书后的道途法术来大力出奇迹，不合书两眼一抹黑就不会玩了；或者还是用正式版早就有的射线法、扩充战法DC法这种低配玩法。</span></li></ul><p><strong><span>神话2法术大师主角9级不公平难度打眷泽城</span></strong><span>：只有主角一个九环奥术，队友都是剧情队友，队伍以物理输出为主，两个主力菜刀，主角双充裕。此时奥法契约有两次，法术聚能两次，超魔大师-延时超魔一次。其实主角法师最好是雇佣一个BUFF自理的大力哥，比如剑圣、圣杀、神眷猎人之类的，这样打起来会比较舒服。看看无表菜刀队的对于九环人的吸血有多狠吧，法术大部分都给buff了，只剩下几个控制法术。</span></p><ul><li><strong><span>一环10个</span></strong><span>：优先满足全队的变巨/缩小，然年后记1个护盾术给自己，剩下都是渐隐术，法师护甲可以自己记也可以靠药水。</span></li><li><strong><span>二环10个</span></strong><span>：优先满足全队核心C位和自己的猫之轻灵（算两个吧），然后记1个狐之狡黠给自己，1个隐形术，剩下6个增效魔法飞弹配合低等强效超魔权杖和力场之锋。</span></li><li><strong><span>三环9个</span></strong><span>：没啥好说，直接5个加速术配合低等延时超魔权杖，剩下就是2个高等魔化武器，2个英雄气概</span></li><li><strong><span>四环7个</span></strong><span>：延时移位术×4给主T，灭顶悲恸×1（对抗意志），咆哮术×2（对抗强韧，搭配超魔大师的延时）</span></li><li><strong><span>五环6个</span></strong><span>：延时高等隐形术×4给主C，冰牢×1（对抗反射），共用石肤×1</span></li></ul><p><span>这背板了吗，根据敌人记忆法术了吗？全程给队友续上高隐/移位术+共用石肤了，打小怪难道还需要用其他法术么？打BOSS看看其豁免哪个低，不是有手就行？没控住BOSS怎么办？奥法契约回复一个然后用德莱文的帽子瞬发再来一次，还没控住怎么办？必中的魔法飞弹打伤害咯。</span></p><p><strong><span>神话4灵使法术大师主角15级不公平难度0休息打午夜神庙（包括谜中之谜和取乐）</span></strong><span>：只有主角一个九环奥术，神话加点双充裕+反应施术+偏好延时，队友都是剧情队友，队伍以物理输出清理小怪，打BOSS靠法术打配合（打取乐只要席拉用正义烙印开启突袭轮，配合元素注能法袍的地狱烈焰射线两发就带走了，根本不用摆召唤物），索希尔+两个主力菜刀（兰恩大力哥和鸟哥）+爱露莎蕾+席拉。此时奥法契约有四次，法术聚能两次，超魔大师-强效2次。快捷物品栏（其实中途可以换超魔权杖的）：旧魔典、噬心浪欲、甄选超魔权杖、高等及远超魔权杖/圣徽。</span><strong><span>队友要是能自理更多BUFF的话，主角法师会用的更舒服一点</span></strong><span>。</span></p><ul><li><strong><span>一环14个</span></strong><span>：满足BUFF以后，记对1个克敌机先、剩下记延时刺耳尖啸（DLC3有低等顽强超魔权杖）</span></li><li><strong><span>二环14个</span></strong><span>：满足BUFF以后，记1个落石、1个闪光尘，剩下都是延时狂笑术（DLC3有低等顽强超魔权杖）</span></li><li><strong><span>三环12个</span></strong><span>：9个延时加速术，2个延时移位术，2个高等魔化武器</span></li><li><strong><span>四环10个</span></strong><span>：延时高等隐形术×10，</span></li><li><strong><span>五环10个</span></strong><span>：恶意变形术×2，延时冰牢×2，延时共用石肤×1，延时心灵迷雾×1，延时回声定位×1，甄选延时咆哮术×3</span></li><li><strong><span>六环9个</span></strong><span>：高等解除魔法×2（搭配法术聚能），延时高等英雄气概×0（灵使可以第三章买英雄祈神卷轴，买9级制作工具就能做了），顽强灭顶悲恸×2，延时酷热之风×3（搭配甄选超魔权杖），顽强延时咆哮术×2，顽强驱逐术×0，延时焦油池×0，地狱烈焰射线×0（搭配超魔大师-强效+噬心浪欲，6环可以用反应施术瞬发）</span></li><li><strong><span>七环3个</span></strong><span>：延时伟岸雄姿×1/2（配合制作好的延时伟岸卷轴使用），延时迷醉波×1/0，延时群体定身人类×1，延时顽强冰牢×0，增效闪电链×0（搭配超魔大师-强效+噬心浪欲），增效地狱烈焰射线×0（搭配超魔大师-强效+噬心浪欲）</span></li><li><strong><span>八环2个</span></strong><span>：延时可怖外表×0，延时高等咆哮术×1，延时风暴束×1（搭配超魔大师-强效+噬心浪欲）</span></li></ul><p><span>×0的就是奥法契约临时调用法术，也可以用奥法契约临时调用其他关键法术。打普通小怪根本不需要法师出手，只有遇到敌人突后排、大群敌人+射手组合、敌人法师和敌方精英/BOSS战 才需要用 输出/控制 法术。</span></p><h2 id='法术推荐'><span>法术推荐</span></h2><h3 id='一环'><span>一环</span></h3><figure><table><thead><tr><th><span>法术</span></th><th><span>效果</span></th><th><span>推荐搭配的超魔（性价比从左往右）</span></th><th><span>常用装备搭配（通用装备如战斗法师木棍就不举例了）</span></th></tr></thead><tbody><tr><td><span>魔法飞弹</span></td><td><span>必中类法术，伤害非常稳定，但是要求职业有加CL的能力，后面会介绍。</span></td><td><span>增效、强效、极效</span></td><td><span>初学者手套、低等强效超魔权杖、低等极效超魔权杖、力场之锋</span></td></tr><tr><td><span>雪球术</span></td><td><span>射线类法术，对抗强韧，豁免失败恍惚。无视法术抗力，伤害还不错，后面会介绍。</span></td><td><span>增效、强效、极效</span></td><td><span>初学者手套、低等强效超魔权杖、低等极效超魔权杖</span></td></tr><tr><td><span>七彩喷射</span></td><td><span>对抗意志，控制效果是震慑（就算敌人HD＞6也会震慑），除了范围小了没任何缺点，亟需一个加法术作用范围的超魔，要是能加到30尺锥型将是绝杀。</span></td><td><span>延时、顽强、升阶</span></td><td><span>低等延时超魔权杖，威压木棍</span></td></tr><tr><td><span>油腻术</span></td><td><span>区域效果法术，对抗反射，豁免失败倒地，倒地以后对近战AC-4，对远程AC+4，且无法行动，起身要被借机攻击。</span></td><td><span>顽强、升阶、甄选</span></td><td>&nbsp;</td></tr><tr><td><span>尖啸刺耳</span></td><td><span>对抗强韧，豁免失败眩晕一轮，后期搭配装备能变成4轮。</span></td><td><span>延时、顽强、升阶</span></td><td><span>初学者手套、低等延时超魔权杖、无面之声</span></td></tr><tr><td><span>克敌机先</span></td><td><span>配合射线使用，实现射线几乎必中效果，</span><del><span>射线不消耗克敌机先的次数</span></del><span>（修复了，目前主要是给奥贼的射线挂错乱之创、或者给魔射的法术打击射线使用、或者搭配要害打击/单发射线如弱能术使用）。</span></td><td><span>延时</span></td><td><span>低等延时超魔权杖</span></td></tr><tr><td><span>缩小术</span></td><td><span>加2敏捷，还有体型+1AB和1AC。</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>护盾术、法师护甲</span></td><td><span>各加4AC。</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>渐隐术</span></td><td><span>隐形以后攻击敌人，只要敌人没有反隐之类的手段，就会措手不及（AC失去敏捷加值），而且AB+2【隐蔽】。还能用来脱离仇恨。</span></td><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h3 id='二环'><span>二环</span></h3><figure><table><thead><tr><th><span>法术</span></th><th><span>效果</span></th><th><span>推荐搭配的超魔（性价比从左往右）</span></th><th><span>常用装备搭配（通用装备如战斗法师木棍就不举例了）</span></th></tr></thead><tbody><tr><td><span>狐/枭/鹰</span></td><td><span>加4点对应的施法者属性，相当于加了2DC。</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>猫之轻灵</span></td><td><span>加4敏捷，相当于2先攻、2AC和2AB。</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>镜影术</span></td><td><span>保命</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>朦胧术</span></td><td><span>分钟级的20%隐蔽失手率</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>隐形术</span></td><td><span>跟渐隐术一样，持续时间更长，可以给脆皮队友用来挂机。</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>蛛网术</span></td><td><span>主要是酒馆保卫战用的，对抗反射，主要就是分割战场，不让敌人聚在一起。纠缠效果减4敏和2AB，跟油腻术铺一起控制效果更好。</span></td><td><span>顽强、升阶、甄选</span></td><td>&nbsp;</td></tr><tr><td><span>目盲术</span></td><td><span>打不免疫诅咒效果的低强韧敌人，豁免失败后永久目盲。</span></td><td><span>顽强、升阶</span></td><td>&nbsp;</td></tr><tr><td><span>闪光尘</span></td><td><span>打意志的非心智法术，豁免失败以后目盲，对抗幽灵之类很不错。</span></td><td><span>顽强、升阶</span></td><td>&nbsp;</td></tr><tr><td><span>音鸣爆</span></td><td><span>打强韧的AOE法术，豁免失败以后震慑1轮，牧师/先知都靠这个玩意打控制。</span></td><td><span>延时、顽强、升阶</span></td><td><span>低等延时超魔权杖</span></td></tr><tr><td><span>狂笑术</span></td><td><span>对抗意志造成俯卧（倒地以后无法行动，对近战AC-4，对远程AC+4），</span><del><span>敌人如果免疫俯卧则控制无效</span></del><span>【2.0.4k版本以后更新，目前免疫俯卧的敌人虽不会俯卧但会无法行动】。</span></td><td><span>顽强、升阶</span></td><td><span>威压木棍</span></td></tr><tr><td><span>落石</span></td><td><span>造成困难地形，还能顺便打一下集群。</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>灼热射线</span></td><td><span>射线类法术，后面会介绍。</span></td><td><span>增效、强效、极效</span></td><td><span>低等强效超魔权杖、低等极效超魔权杖、元素注能法袍、元素杀戮革甲、纵火狂之戒、马兰德的耻辱</span></td></tr><tr><td><span>恐吓术</span></td><td><span>对抗意志，敌人豁免失败惊恐，豁免成功战栗一轮。AOE无误伤，但是只能应对6HD以下的敌人，序章和第一章在狭小空间特别好用。</span></td><td>&nbsp;</td><td><span>威压木棍</span></td></tr><tr><td><span>致病纠缠</span></td><td><span>敌人反射豁免失败则陷入纠缠（-4敏捷，-2AB，移速减半），然后需要进行强韧豁免检定，强韧豁免检定失败则陷入恶心（-2AB、-2全豁免、-2伤害）。属于前期超级强的削弱性法术。</span></td><td><span>顽强、升阶、甄选</span></td><td>&nbsp;</td></tr><tr><td><span>极寒之触</span></td><td><span>近战接触类法术，造成4d6寒冷伤害，且敌人恍惚1轮（无豁免检定）。可以通过法术延时到2轮（但是我记得其本身没有延时超魔孔位---显然是BUG，只能靠其他的办法，比如魔战士的延时奥能、共通学派的超魔大师和适时援助等）。法师用这个可以搭配及远超魔权杖将其变成射线，恍惚可以废掉敌人的物理输出。</span></td><td><span>延时、及远、增效、强效、极效</span></td><td>&nbsp;</td></tr><tr><td><span>凛冬之握</span></td><td><span>造成1d6寒冷伤害，对抗反射，豁免失败倒地伤害不减半，倒地以后对近战AC-4，对远程AC+4，且无法行动，起身要被借机攻击。在凛冬之握之上的敌人对抗冰系豁免-2（搭配夺命暴雪权杖，还能给其他法术加DC），等于这个法术自带2DC，配合序章奔流之戒强无敌。【注：目前凛冬之握可以无视行动自如对敌人造成俯卧，跟同为困难地形效应的油腻术不同，所以可以用于对抗</span><strong><span>低反射</span></strong><span>却有&#39;行动自如&#39;的敌人（前提不免疫俯卧）；因为是桌面规则里三个同环法术效果合一的法术，所以也说不清是忘记做行动自如适配的BUG还是特意做成这样】</span></td><td><span>延时、顽强、升阶、甄选</span></td><td><span>奔流之戒、低等顽强超魔权杖</span></td></tr><tr><td><span>号令死灵</span></td><td><span>对抗不死生物，意志豁免，豁免失败将被支配（变成友军）。对抗拥有各种免疫的幽灵（全部硬控都不吃）还不错，控住了无论是打死还是帮忙作战都不错。目前版本幽灵【不死生物+虚体】这种敌人，没有亡灵血脉的法师一般只能靠灵魂之灾+怼法术伤害和号令死灵。一般是后期全学派DC高了，遇到幽灵可以顺手用一下。</span></td><td><span>顽强、升阶、延时</span></td><td>&nbsp;</td></tr></tbody></table></figure><h3 id='三环'><span>三环</span></h3><figure><table><thead><tr><th><span>法术</span></th><th><span>效果</span></th><th><span>推荐搭配的超魔（性价比从左往右）</span></th><th><span>常用装备搭配（通用装备如战斗法师木棍就不举例了）</span></th></tr></thead><tbody><tr><td><span>加速术</span></td><td><span>整轮攻击的时候多一次攻击，且移速+30，AB和AC+1。三环最强的法术没跑了。</span></td><td><span>延时</span></td><td><span>低等延时超魔权杖、德莱文的帽子</span></td></tr><tr><td><span>共用抵抗能量</span></td><td><span>获得对应能量抗性，5CL时获得10抗性，7CL时获得20抗性，11CL时获得30抗性。所以这个法术的施法者等级特别重要。</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>共用防护箭矢</span></td><td><span>获得dr10/【近战 魔法】（意思是除了近战物理伤害和+N武器造成的物理伤害以外，其他物理伤害都能被减免），吸收伤害上限为施法者等级（最高100）。游戏里还可以用来防御集群之类的伤害。</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>解除魔法</span></td><td><span>分为目标型和定点型，目标型就是解除敌人身上的BUFF，定点型就是解除敌人的区域效果，比如热风术、剑刃障壁。解除的时候需要过检定，我们的检定为解除魔法的施法者等级+d20，对抗法术的解除DC（目标法术的施法者等级+11），大于等于解除DC就可以解除。</span></td><td><span>瞬发（反应施术）</span></td><td><span>纯净视域眼镜</span></td></tr><tr><td><span>移位术</span></td><td><span>获得50%失手率，效果不错。部分敌人会有识破隐形而没有真知术，能破隐形但是破不了移位术。</span></td><td><span>延时</span></td><td><span>低等延时超魔权杖</span></td></tr><tr><td><span>火球术</span></td><td><span>AOE伤害法术，用于打集群，后面会介绍。配合夺命暴雪权杖也是前期最强控制法术。</span></td><td><span>增效、强效、极效</span></td><td><span>低等强效超魔权杖、低等极效超魔权杖、噬心浪欲、元素注能法袍、元素杀戮革甲、屠杀披风、纵火狂之戒、马兰德的耻辱、夺命暴雪权杖</span></td></tr><tr><td><span>臭云术</span></td><td><span>对抗强韧，豁免失败则反胃（就是不能攻击和施法，只能移动和呕吐）。因为是毒素效果，免疫毒素的恶魔对此免疫，但是对抗人形敌人还是很好用。搭配共用延缓毒发使用。</span></td><td><span>顽强</span></td><td><span>蛇相</span></td></tr><tr><td><span>神使灵光</span></td><td><span>对抗意志，敌人豁免失败减2豁免、2AC和2AB，就是一个超级光环效果，效果非常强。</span></td><td><span>升阶</span></td><td><span>紫色石刀、屠杀披风，小技巧：先用加塑能DC的武器上buff，然后换威压木棍，可以多1DC。</span></td></tr><tr><td><span>沉眠术</span></td><td><span>对抗意志，豁免失败以后陷入睡眠。有总HD上限，第一章大部分敌人都没有10HD以上，第一章给聂纽之类的可以用。后面就不用了</span></td><td>&nbsp;</td><td><span>威压木棍</span></td></tr><tr><td><span>缓慢术</span></td><td><span>对抗意志，豁免失败以后恍惚（每轮进行一个标准动作而不是整轮动作）。大部分不死生物敌人免疫麻痹所以身上不会有行动自如，但是不免疫恍惚，可以靠恍惚打控制，物理系敌人中了恍惚基本上没输出了。</span></td><td><span>顽强、升阶</span></td><td><span>德莱文的帽子</span></td></tr><tr><td><span>妙语祷言</span></td><td><span>迅捷动作法术（相当于自带瞬发），无需豁免检定，敌人必定迷魂（弱化版眩晕，受到伤害以后会摆脱）一轮，可以延时到2轮。主要用于控制一些很棘手，但是又不能马上解决的敌人。敌人迷魂以后高解也不会解除迷魂。【圣武士 2 环、审判官 3 环】</span></td><td><span>延时</span></td><td><span>低等延时超魔权杖</span></td></tr></tbody></table></figure><p>&nbsp;</p><h3 id='四环'><span>四环</span></h3><figure><table><thead><tr><th><span>法术</span></th><th><span>效果</span></th><th><span>推荐搭配的超魔（性价比从左往右）</span></th><th><span>常用装备搭配（通用装备如战斗法师木棍就不举例了）</span></th></tr></thead><tbody><tr><td><span>高等隐形术</span></td><td><span>隐形以后攻击敌人，只要敌人没有反隐之类的手段，就会措手不及（AC失去敏捷加值），而且AB+2【隐蔽】。高等隐形术在攻击以后不会失去隐形效果，无论是物理还是打射线都是很好用。</span></td><td><span>延时</span></td><td><span>延时超魔法杖</span></td></tr><tr><td><span>神圣之惩/秩序之怒</span></td><td><span>对抗意志，对应阵营敌人豁免失败目盲/眩晕1轮，还有跟火球术一个等级的神力伤害。这个法术关键在于控制效果，而不是伤害。</span></td><td><span>延时、顽强、升阶、极效</span></td><td><span>密契权杖（6环内极效，先知/牧师专用）</span></td></tr><tr><td><span>炽焰击</span></td><td><span>AOE伤害法术，后面会介绍</span></td><td><span>增效、强效、极效</span></td><td><span>纵火狂之戒、马兰德的耻辱</span></td></tr><tr><td><span>咆哮术</span></td><td><span>打强韧的无差别AOE，震慑效果非常给力，就是需要自己找位置放</span></td><td><span>延时、顽强、甄选、升阶</span></td><td><span>延时超魔权杖</span></td></tr><tr><td><span>灭顶悲恸</span></td><td><span>遇到有行动自如的低意志的敌人，又懒的用解除魔法怎么办？这玩意就可以搞定</span></td><td><span>顽强、升阶</span></td><td><span>威压木棍、炫目斑斓之戒、惑缠手套、明晰镜饰</span></td></tr><tr><td><span>魅影杀手</span></td><td><span>打意志和强韧的秒杀神技，打BOSS一般用6环顽强版，打小怪直接用4环版</span></td><td><span>顽强、升阶</span></td><td><span>威压木棍、幻术师戒指、明晰镜饰</span></td></tr><tr><td><span>虹彩图纹</span></td><td><span>对抗意志，豁免失败后陷入迷魂（弱化版眩晕，受到伤害以后会摆脱），有总HD限制。一般是前中期用来控制敌人后排施法单位。</span></td><td><span>顽强</span></td><td>&nbsp;</td></tr><tr><td><span>困惑术</span></td><td><span>AOE对抗意志，豁免失败后陷入困惑（敌人只有25%概率自由行动），最早的AOE惑控系控制法术，效果是特别稳，但是挺强的。</span></td><td><span>顽强</span></td><td><span>威压木棍、炫目斑斓之戒、惑缠手套、明晰镜饰</span></td></tr><tr><td><span>弱能术</span></td><td><span>负向等级减敌人AB和豁免等级，这个时期的恶魔和龙都是不免疫这个的</span></td><td><span>强效、极效</span></td><td>&nbsp;</td></tr><tr><td><span>冰风暴</span></td><td><span>第二章打饕餮虫集群很好用，用卷轴代替也不错。</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>迟缓污泥</span></td><td><span>相当于加强版缓慢术。对抗强韧，豁免失败以后眩晕一轮（可以延时到2轮），然后陷入恍惚（每轮进行一个标准动作而不是整轮动作）。大部分不死生物敌人自带免疫麻痹所以身上不会有行动自如，但是不免疫恍惚，可以靠恍惚打控制，物理系敌人中了恍惚基本上没输出了。</span></td><td><span>延时、顽强、升阶</span></td><td>&nbsp;</td></tr></tbody></table></figure><h3 id='五环'><span>五环</span></h3><figure><table><thead><tr><th><span>法术</span></th><th><span>效果</span></th><th><span>推荐搭配的超魔（性价比从左往右）</span></th><th><span>常用装备搭配（通用装备如战斗法师木棍就不举例了）</span></th></tr></thead><tbody><tr><td><span>冰封之牢</span></td><td><span>对抗反射，豁免失败以后麻痹。后续每一轮都能进行强韧豁免检定来挣脱。</span></td><td><span>顽强、升阶</span></td><td><span>奔流之戒、紫色石刀、屠杀披风</span></td></tr><tr><td><span>魅影蛛网</span></td><td><span>现在有BUG，但凡免疫毒素都免疫反胃，所有这招对恶魔只相当于幻术版甄选蛛网术，仅仅是DC比咒法系的蛛网术好堆点</span></td><td><span>顽强、升阶</span></td><td><span>威压木棍、幻术师戒指、明晰镜饰</span></td></tr><tr><td><span>驱逐术</span></td><td><span>对抗意志的，仅对跨位面生物有效（记得看敌人的属性），效果相当于秒杀，打食肉晶簇的时候特别神</span></td><td><span>顽强、升阶</span></td><td><span>威压木棍</span></td></tr><tr><td><span>定身怪物/绞缚定身</span></td><td><span>对抗意志的，豁免失败麻痹，之后每轮进行意志检定来挣脱。</span></td><td><span>顽强、升阶</span></td><td><span>威压木棍、炫目斑斓之戒、惑缠手套、明晰镜饰</span></td></tr><tr><td><span>回声定位</span></td><td><span>获得盲视：无条件侦测出周围的隐匿单位，且无视隐形、朦胧、镜影（目前回声定位又不能无视镜影了，但是真知术却可以无视敌人的心灵屏障+镜影术了；）、移位、环境隐蔽效果。</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>恶意变形术</span></td><td><span>对抗强韧，豁免失败变成无法攻击的狗，且智、感、魅变成1，就是也无法施法（用于对抗强韧低的奥术施法者和不死生物等）。【注：不死生物由于使用魅力代替体质，因此魅力变成到1将会把血量急剧降低，基本上只剩下（6+0.5×HD+健壮）的血量，不死生物被恶意变形以后随便甩个伤害法术就能秒杀了】</span></td><td><span>顽强、升阶</span></td><td><span>变形法袍</span></td></tr><tr><td><span>心灵迷雾</span></td><td><span>对抗意志，豁免失败以后意志豁免-10，敌人从迷雾中脱离以后意志必定-10（跟前者叠加）。这个法术的作用是强化控制时间，或者强化其他DC更低的意志法术。比如说本来群体定身人类只有50%概率豁免失败，就算敌人第一轮豁免失败了，第二轮也容易挣脱，但是中了心灵迷雾以后就只能骰20来挣脱。又比如防护系DC比惑控系低很多，可以先用心灵迷雾降意志，然后再用放逐术秒杀。</span></td><td><span>顽强、升阶</span></td><td><span>威压木棍、炫目斑斓之戒、惑缠手套、明晰镜饰</span></td></tr><tr><td><span>弱智术</span></td><td><span>对抗意志，豁免失败以后魅力和智力变成1，无法施法（游戏里应该是只限制智力和魅力施法）。术士或者法师面对此法术的豁免检定中会受到 4 减值。相当于施法者杀手，见面甩一个弱智术就能让敌人的法师无能狂怒了。</span></td><td><span>顽强、升阶</span></td><td><span>威压木棍、炫目斑斓之戒、惑缠手套、明晰镜饰</span></td></tr></tbody></table></figure><h3 id='六环'><span>六环</span></h3><figure><table><thead><tr><th><span>法术</span></th><th><span>效果</span></th><th><span>推荐搭配的超魔（性价比从左往右）</span></th><th><span>常用装备搭配（通用装备如战斗法师木棍就不举例了）</span></th></tr></thead><tbody><tr><td><span>腐烂幻象</span></td><td><span>幻术牌面，AOE无误伤，还能减感知，第二轮强韧豁免失败睡眠以后基本上等于死亡。缺点是并非强控，睡眠效果需要最早第二轮生效。</span></td><td><span>顽强、升阶</span></td><td><span>威压木棍、幻术师戒指、明晰镜饰</span></td></tr><tr><td><span>高等解除魔法</span></td><td><span>解除了英雄气概/高等英雄气概、污邪灵光以后，直接减了敌人8全豁免，配合解法余波和暴力解法相当于减12全豁免；解了行动自如以后就可以用冰牢之类的控制了。解除魔法的数量上限为高等解除魔法的CL/4。其他原理跟解除魔法一致，需要注意的是高等解除魔法不能解除区域效果。</span></td><td><span>瞬发（反应施术）</span></td><td><span>纯净视域眼镜</span></td></tr><tr><td><span>闪电链</span></td><td><span>AOE伤害法术，搭配灵使的卓越魔法特别神，后面有介绍</span></td><td><span>增效、强效、极效</span></td><td><span>密契权杖（6环内极效，先知/牧师专用）、噬心浪欲、元素注能法袍、元素杀戮革甲、屠杀披风、高等强效超魔权杖、高等极效超魔权杖</span></td></tr><tr><td><span>地狱烈焰射线</span></td><td><span>射线类法术的终极法术，后面有介绍</span></td><td><span>增效、强效、极效</span></td><td><span>密契权杖（6环内极效，先知/牧师专用）、噬心浪欲、元素注能法袍、元素杀戮革甲、纵火狂之戒、马兰德的耻辱、高等强效超魔权杖、高等极效超魔权杖</span></td></tr><tr><td><span>光之锁链</span></td><td><span>对抗反射，豁免失败以后麻痹。后续每一轮都能进行反射豁免检定来挣脱。因为敌人被麻痹以后敏捷变成1，所以基本上除了大成功基本上挣脱不了。主角法师用这个不错，因为主角有悖论秘典的+1咒法DC。</span></td><td><span>顽强、升阶</span></td><td>&nbsp;</td></tr><tr><td><span>剑刃障壁</span></td><td><span>场地形法术，可以先铺好几个强极增剑刃障壁，欺负敌人AI不聪明。释放瞬间结算两次法术伤害，其实爆发还是很猛的。</span></td><td><span>增效、强效、极效、甄选</span></td><td><span>正常是不能强效和极效的，要通过癫狂灾瘟来强行超魔。力场之锋、屠杀披风</span></td></tr><tr><td><span>酷热之风</span></td><td><span>区域型持续法术，对抗强韧，豁免失败会倒地，受到法术的火焰伤害就会疲劳，再次受到火焰伤害就会力竭；可惜是有误伤的法术，不靠甄选BUG反而影响全队输出效率。</span></td><td><span>顽强、升阶、甄选</span></td><td><span>屠杀披风、决心法袍</span></td></tr><tr><td><span>放逐术</span></td><td><span>驱逐术的升级版，变成AOE版本，只是有总HD上限</span></td><td><span>顽强、升阶</span></td><td>&nbsp;</td></tr><tr><td><span>焦油池</span></td><td><span>顶级控制系法术，敌人近战必定无法行动一轮，也可以用来控制集群。法术范围内每轮一次，对抗反射，失败则会陷入纠缠（焦油）状态（-4敏捷，-2AB，不能移动）；每轮一次，摆脱焦油状态需要进行反射豁免、灵巧和运动检定，成功后可以脱离焦油状态。无论最初是否豁免成功，脱离法术范围一轮内无法行动以清除身上的焦油状态。目前场地形法术的法术/能力有BUG，释放的时候会触发两次效果，所以焦油池释放的时候相当于自带顽强。因为行动自如免疫这个法术的控制，然后火焰烙印可以让队友免疫自己的火焰伤害，所以这个法术也相当于自带甄选。</span></td><td><span>顽强</span></td><td>&nbsp;</td></tr></tbody></table></figure><h3 id='七环'><span>七环</span></h3><figure><table><thead><tr><th><span>法术</span></th><th><span>效果</span></th><th><span>推荐搭配的超魔（性价比从左往右）</span></th><th><span>常用装备搭配（通用装备如战斗法师木棍就不举例了）</span></th></tr></thead><tbody><tr><td><span>颂圣之语</span></td><td><span>塑能系牌面法术，有加CL的职业无脑颂圣复读机。游戏里描述不全，只要敌人HD符合，豁免成功也会有1d2轮目盲和1轮麻痹（豁免失败则根据CL和HD，造成2d2目盲、5分钟麻痹和秒杀）。不需要太考虑DC，只要正常堆一下CL就能必定目盲、麻痹。</span></td><td><span>延时、顽强、升阶</span></td><td><span>无面之声、屠杀披风</span></td></tr><tr><td><span>虹光喷射</span></td><td><span>锥形摸奖法术，敌人被法术命中以后要骰1~8的骰子，其中有4个都是“类”秒杀（困惑、恶意变形、驱逐、毒素秒杀）。骰到8就会随机受到两种效果。因为恶魔免疫毒素，所以这个法术大概是50%的“类秒杀&quot;（如果敌人豁免失败）。适合后期用来摸奖，很好玩的法术。</span></td><td><span>顽强、甄选、升阶</span></td><td><span>屠杀披风</span></td></tr><tr><td><span>狮子吼</span></td><td><span>对抗强韧，豁免失败震慑1轮，延时到2轮就很舒服。不过一般是用范围版本的咆哮术</span></td><td><span>延时、顽强、升阶</span></td><td><span>无面之声、屠杀披风、决心法袍</span></td></tr><tr><td><span>酸液爆发</span></td><td><span>塑能系最高伤害的法术，后面有介绍，这个法术无视法术抗力，可以对魔像大显神威。</span></td><td><span>延时、增效、强效、极效、甄选</span></td><td><span>屠杀披风、元素注能法袍、噬心浪欲、高等强效超魔权杖、高等极效超魔权杖、宗师之杖</span></td></tr><tr><td><span>烈焰风暴</span></td><td><span>火系超大范围AOE法术，跟闪电链差不多定位，就是能吃火系装备的加成，且后续有持续DOT伤害。</span></td><td><span>增效、强效、极效</span></td><td><span>噬心浪欲、元素注能法袍、元素杀戮革甲、纵火狂之戒、马兰德的耻辱、高等强效超魔权杖、高等极效超魔权杖、屠杀披风</span></td></tr><tr><td><span>寒冰之躯</span></td><td><span>免疫目盲、震慑、电击、毒素、寒冰、重击、精准。无论是近战还是远程，有这个东西就很舒服。</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>群体定身人类</span></td><td><span>这个法术有个BUG，对着队友放就可以无视法术目标的限制了。当成九环的群体定身怪物来用。</span></td><td>&nbsp;</td><td><span>威压木棍、炫目斑斓之戒、惑缠手套、明晰镜饰、摧心护腕</span></td></tr><tr><td><span>迷醉波</span></td><td><span>30尺锥形，对抗意志，豁免失败以后，被震慑一轮，并且在剩余法术时间内都会陷入恍惚。豁免成功则只会恍惚一轮。都可以被延时翻倍时间，保底2轮恍惚基本上也可以废掉敌人的物理输出。这个其实是相当于加强版七彩喷射了。可以作为法师7环主力控制。</span></td><td><span>延时、顽强、甄选</span></td><td><span>威压木棍、炫目斑斓之戒、惑缠手套、明晰镜饰、摧心护腕、高等顽强超魔权杖、高等甄选超魔权杖</span></td></tr></tbody></table></figure><h3 id='八环'><span>八环</span></h3><figure><table><thead><tr><th><span>法术</span></th><th><span>效果</span></th><th><span>推荐搭配的超魔（性价比从左往右）</span></th><th><span>常用装备搭配（通用装备如战斗法师木棍就不举例了）</span></th></tr></thead><tbody><tr><td><span>风暴束</span></td><td><span>塑能系牌面法术，高伤害还带控制</span></td><td><span>延时、增效、强效、极效</span></td><td><span>屠杀披风、决心法袍、元素注能法袍、噬心浪欲、高等强效超魔权杖、高等极效超魔权杖、宗师之杖、高等顽强超魔权杖</span></td></tr><tr><td><span>迷幻图纹</span></td><td><span>虽然有写总HD上限，但是实际上没有限制。这个法术能必定造成困惑。</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>高等咆哮术</span></td><td><span>60尺锥型的超大范围控制，对抗强韧，豁免失败震慑1轮，延时到2轮就很舒服。</span></td><td><span>延时、甄选</span></td><td><span>无面之声、屠杀披风、决心法袍、高等顽强超魔权杖、高等甄选超魔权杖</span></td></tr><tr><td><span>心灵屏障</span></td><td><span>免疫预言法术，这样高等隐形术、镜影术之类就不会被敌人的真知术、识破隐形、思维侦测等预言法术来破除了。主要是用的共用版本。</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>可怖外表</span></td><td><span>加AC、体型、力量、体质、还给AOE无豁免的战栗灵光</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>水幕拒敌</span></td><td><span>免疫火焰，对抗无行动自如的敌人加8AC。</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>秩序护盾</span></td><td><span>免疫心智</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>高等天使之貌</span></td><td><span>免疫酸冰，全队+4豁免【抗力】和+4AC【偏斜】，节省队友装备位置。</span><del><span>这个偏斜目前可以跟虔诚护盾/御魔之盾/防护戒指之类的加值叠加</span></del><span>。【BUG已修复】</span></td><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h3 id='九环'><span>九环</span></h3><figure><table><thead><tr><th><span>法术</span></th><th><span>效果</span></th><th><span>推荐搭配的超魔（性价比从左往右）</span></th><th><span>常用装备搭配（通用装备如战斗法师木棍就不举例了）</span></th></tr></thead><tbody><tr><td><span>吸能术</span></td><td><span>负向等级减敌人AB和豁免等级，真的没有很多敌人免疫负向等级。</span></td><td><span>强效、极效</span></td><td><span>高等强效超魔权杖、高等极效超魔权杖</span></td></tr><tr><td><span>津波</span></td><td><span>对敌人造成24d6的伤害，强韧豁免成功伤害减半；没行动自如就会被冲走且倒地，灵巧/运动检定成功则不会被冲走和倒地，延时以后可以倒地两轮，属于是非飞空且运动/灵巧不高的敌人克星了。</span></td><td><span>延时、甄选、顽强</span></td><td><span>高等甄选超魔权杖，高等顽强超魔权杖</span></td></tr><tr><td><span>复仇旋风</span></td><td><span>加60尺移速【其他加值】，受到远程攻击有50%隐蔽失手率（敌人</span><del><span>有盲视/回声定位</span></del><span>、真知术都不能无视这个失手率），免疫吐息，被近战攻击的话，敌人需要强韧豁免检定来防止被击倒。</span></td><td>&nbsp;</td><td><span>屠杀披风、决心法袍</span></td></tr><tr><td><span>群体冰封之牢</span></td><td><span>冰封之牢的群体版</span></td><td><span>顽强</span></td><td><span>屠杀披风、高等顽强超魔权杖</span></td></tr><tr><td><span>神威如岳</span></td><td><span>灭顶悲恸群体版，敌人挣脱以后还有感知伤害和1d4轮恍惚。敌人豁免成功也有1轮恍惚。有偏好延时还能延时一下，必定恍惚两轮。</span></td><td><span>顽强</span></td><td><span>威压木棍、炫目斑斓之戒、惑缠手套、明晰镜饰、摧心护腕、心灵控制护目镜、高等顽强超魔权杖</span></td></tr><tr><td><span>群体定身怪物</span></td><td><span>定身怪物的群体版</span></td><td><span>顽强</span></td><td><span>威压木棍、炫目斑斓之戒、惑缠手套、明晰镜饰、摧心护腕、心灵控制护目镜、高等顽强超魔权杖、</span></td></tr><tr><td><span>诡影杀手</span></td><td><span>群体版魅影杀手，幻术牌面，而且第一段意志豁免失败就有1轮震慑，有偏好延时还能延时一下变成2轮震慑。</span></td><td><span>顽强</span></td><td><span>宗师之杖（破免疫）、明晰镜饰、心灵控制护目镜、幻术师戒指、高等顽强超魔权杖</span></td></tr><tr><td><span>共用心灵屏障</span></td><td><span>心灵屏障的群体版本</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>预警</span></td><td><span>AC+2【洞察】，给直觉闪避</span></td><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h2 id='关于dc如何合理堆叠'><span>关于DC如何合理堆叠</span></h2><p><strong><span>基础DC的构成：10+施法者属性调整值+法术原环位+升阶超魔（升阶几级就加几点DC）+专长/神话专长+装备+BUFF+道途能力</span></strong></p><p><strong><span>等效DC的构成</span></strong><span>：基础DC+减少敌人对应的豁免数值</span></p><h3 id='基础dc的构成'><span>基础DC的构成</span></h3><p><strong><span>施法者属性调整值堆叠办法</span></strong><span>：</span></p><ul><li><span>基础值：基础20，升级加5，共计25</span></li><li><span>额外的种族加值：半精灵亲眷+2魅力【种族】</span></li><li><span>道途：灵使道途自信之心+5【士气】（法术大师神话10可以到+7），恶魔道途空奢魔相+7智力【恶魔】（配合恶魔道途斗篷），金龙道途+6【其他】（神话10到+8），御衡者道途完美形态，诡计大师神秘1阶+1【增强】（给装备额外+1），传奇道途+4【其他】+5（额外20级的升级加点），虫群道途+N全属性（跟虫群规模相关，神话10之前只加肉体属性）</span></li><li><span>士气加值：宫廷诗人的歌+6</span></li><li><span>天赋加值：静思卷册+2，或者灵魂和肉体的不可思议魔药+2，或者真正统治者的七美德+4（特定道途才能触发+4）【第五章DLC4奖励，找说书人合成】</span></li><li><span>炼金加值：（完美/顶级）神药+8/6/4</span></li><li><span>其他加值：维勒西亚的项链+2，高奏凯歌之戒+N（士气加值翻倍的部分）</span></li><li><span>亵渎加值：亵渎之礼+6，德莱文的帽子+2，恶魔领主/恶魔摄政官+2</span></li><li><span>餐食加值：炽热玉米卷饼（伊兹城或者DLC3直接买）+4</span></li><li><span>增强加值：+2/+4/+6/+8头环（诡计大师额外+1）</span></li><li><span>环境加值：不宣之实法袍+2感知</span></li><li><span>表现加值：莫测真理+2智力（不宣之实法袍和无可辩驳眼镜的组合效果）</span></li><li><span>不考虑神药和宫廷诗人的情况下，满级神装满buff以后，恶魔道途是54智力（23+2种族+7恶魔+8增强+6亵渎+2天赋+2其他+4餐食），灵使道途是57智/感/魅（半精灵则为59魅，法术大师则也可以61智）。</span></li></ul><p><strong><span>专长/神话专长</span></strong><span>：</span></p><ul><li><span>专攻：专攻+高等专攻+神话专攻，共计4点对应学派</span></li><li><span>元素专攻：元素专攻+高等元素专攻，共计2点对应元素</span></li><li><span>扩充战法：一般当成4点对应学派来算就行了</span></li></ul><p><strong><span>装备增加的DC</span></strong><span>：</span></p><ul><li><span>武器：战斗法师木棍+2【第三章象牙迷堂】，紫色石刀+1塑能【第一章集市广场，守护石那里不选御衡者选项即可保留】，威压木棍+1意志【第一章黑翼图书馆隐藏门后】，位面抹灭者+2塑能【第五章骷髅商人异国魔法物品】</span></li><li><span>戒指：炫目斑斓之戒+2惑控【第二章眷泽城击杀隐藏BOSS灾劫巨口获得】，幻术师戒指+2幻术【第二章圣教军奖励】</span></li><li><span>手套：惑缠手套+2惑控【第三章午夜神庙击杀魅魔祭祀/第四章击杀厄运酒馆里的船长米勒拉，各有一个】</span></li><li><span>斗篷：古代令使斗篷+2惑控【第三章实验室】，屠杀披风+2塑能【第三章象牙迷堂和DLC3珍宝岛各有一个】，巫妖道途&lt;黑暗仪式斗篷&gt;+2【第五章眷泽城】，奥法储备斗篷+2【DLC1限定，主线没有】</span></li><li><span>项链：明晰镜饰+2心智（主角后期一般会带维勒西亚的项链）【第三章眷泽城商人购买】、无面之声+2音波【第三章圣教军合成】、最后的阿兹兰特人的传承+2元素【第五章DLC4奖励，找说书人合成】</span></li><li><span>法袍：变化法袍+2变化学派【第三章DLC4会掉落，第四章击杀维勒西亚掉落】，决心法袍+2强韧，元素法袍+2（火焰/流水/雷电等，各自+2对应元素的DC），褴褛黑衫+1巫师法术和巫术【第四章活畜市场商人】，七罪法袍+1DC和+3CL【第四章DLC3珍宝岛击杀BOSS获得】</span></li><li><span>护腕：灼热护腕+2塑能【第三章DLC4商人】，摧心护腕+2惑控【第四章击杀厄运酒馆里的船长米勒拉】</span></li><li><span>眼镜：心灵控制护目镜+2心智DC和CL【第五章谜宇最终BOSS掉落】</span></li><li><span>盔甲：不亡奉献+1死灵【第四章恶魔道途的剧情任务掉落】</span></li></ul><p><strong><span>BUFF</span></strong><span>：</span></p><ul><li><span>灵使的2环奇迹颂诗+2意志，钢铁之歌+2</span></li><li><span>恶魔移植+2</span></li><li><span>黑暗灵光+2心智（装备&lt;希望使者不朽的爱&gt;使用的灵光）</span></li><li><span>天命所归+3</span></li><li><span>看书：《悖论秘典》上半部分看完+1咒法系DC，《走向永恒》+1即死</span></li><li><span>餐食：配吸管奶油汤+1、橡子馅饼+2</span></li><li><span>火焰之躯+1火焰</span></li></ul><p><strong><span>道途能力</span></strong><span>：</span></p><ul><li><span>恶魔道途：配合或然之缚，恶魔狂怒+5，淫梦魔相+4，索寇贝诺魔相--敌人的豁免检定双骰取低</span></li><li><span>天使道途：天使光环的不熄明灯+2</span></li><li><span>灵使道途：卓越魔法--敌人的豁免检定双骰取低</span></li><li><span>御衡者凝视：凝视（豁免等级）+4</span></li></ul><p><strong><span>这里开始合计基础DC</span></strong><span>：</span></p><p><span>以恶魔道途的诡影杀手举例：10+9法术环位+22智力调整值+4专攻/扩充+2幻术师戒指+2战斗法师木棍+1七罪法袍+2心灵控制护目镜+2恶魔移植+2黑暗灵光+5恶魔狂怒+4淫梦魔相+3天命所归+2橡子馅饼，面板DC就有70点，且敌人双骰取低。</span></p><h3 id='等效dc'><strong><span>等效DC</span></strong></h3><p><strong><span>减少敌人豁免的通用手段</span></strong><span>：</span></p><ul><li><span>负面状态：战栗（后期一般靠可怖外表）减少敌人2点全豁免，恶心（后期一般是用暴力解法 或者 大猎物手套+游侠的狩猎大师）减少敌人2点全豁免，邪眼减少敌人4点全豁免（双邪眼就是8点），祈祷术/预知灵光（阻碍）/神圣赞美诗减少敌人1/2/2点全豁免，亵渎赞美诗减少敌人2点全豁免等。</span></li><li><span>解除魔法：解除了敌人的buff，解除高等英雄气概减少4全豁免，解除污邪灵光减少4全豁免，还有其他的buff如心灵屏障、战法转换等。</span></li><li><span>解除魔法的相关专长：解法余波减少敌人2全豁免，暴力解法造成恶心/震慑。</span></li><li><span>装备减少敌人的豁免：灵使道途的老墨法袍-4心智/恐惧效应的豁免，&lt;摄人巨力&gt;腰带-2意志，诡诈烈焰手套-3点敌人全豁免，惑缠手套-2点意志豁免。</span></li><li><span>道途相关：巫妖腐化魔法每解除一个buff减少1全豁免，恶魔道途低等魔相减少敌人对应豁免4点（喝下暗影之血，还可以让敌人对抗自己的阴影学派法术豁免-4），天使道途穿透魔光减敌人2全豁免，御衡者道途的归零、御衡者破敌和神话抑制。</span></li><li><span>找了个图来举例：</span></li></ul><p><img src="https://aaathl.oss-cn-hangzhou.aliyuncs.com/img/%E5%87%8F%E8%B1%81%E5%85%8D%E6%89%8B%E6%AE%B5001.png" referrerpolicy="no-referrer" alt="减豁免手段001"></p><p><strong><span>合计等效DC</span></strong><span>：</span></p><p><span>以恶魔道途预言法师的诡影杀手举例：</span></p><p><span>一轮内的等效DC（战前开预知灵光，开战后瞬发高等解除魔法+标准动作亵渎赞美诗+移动动作诡影杀手）：70+4低等魔相+至少12（解除魔法+解法专长）+2&lt;摄人巨力&gt;腰带（只关系到意志检定部分）+2预知灵光+2亵渎赞美诗+2战栗，总计至少94（意志）/92（强韧）点等效DC，加上敌人豁免检定双骰取低基本上就是95以上的等效DC了。</span></p><p><strong><span>以上就是主角法师的威力，队友法师根本做不到这么高的DC，但是主角法师一个人无需怎么配合，不需要扩充多合1就能做到。所以别说DC难堆了，这个游戏中后期就是主角法爷的天下。</span></strong></p><p><strong><span>另外说明一下，所谓多合一扩充战法（无论算不算卡BUG都行），实际上发力期也是要到中后期（神话4的时候垃圾的很），前中期表现比专攻+高等专攻+双解法+神话专攻+反应施术的玩法烂多了。而后期DC都是溢出，多合一扩充在后期的优势也当然无存。就是说多合一扩充玩法（疑似卡BUG）也没有正常玩厉害，滑稽。另外也别说什么玩DC流就必须得多合一扩充战法了。</span></strong></p><h2 id='法术伤害如何堆叠'><span>法术伤害如何堆叠</span></h2><p><strong><span>审判之矢镇楼</span></strong></p><p><img src="https://aaathl.oss-cn-hangzhou.aliyuncs.com/img/%E5%AE%A1%E5%88%A4%E4%B9%8B%E7%9F%A2%E4%BC%A4%E5%AE%B3.png" referrerpolicy="no-referrer" alt="审判之矢伤害"></p><p><strong><span>很多新手或者刚刚入门的人，玩了几个肉搏BD，然后对比一下法师的法术，就感觉法师要么就射线要么就靠扩充战法堆幻术玩秒杀，其实这个完全是错误的。就像物理伤害需要你堆buff、用好武器，法术伤害也需要用好装备、堆超魔。</span></strong><span>还有的人会感觉法术前期一点伤害都没有，后期才能发力，这个也是完全错误的。</span></p><p><span>先提一个问题，你觉得5级法师一个法术能稳定打出多少伤害？是5d6≈17.5，而且还是豁免成功伤害减半/需要攻击检定+不一定能过法穿+过了法穿还会被抗性减少伤害？这种理解就好像，玩肉搏BD不加buff，不用寒铁武器/祝福武器，打恶魔还要被DR减伤，打出0或者个位数伤害，是一个概念。</span></p><p><span>这里就以5级研究法师的魔法飞弹举例：</span></p><ul><li><span>普通的5级魔法飞弹：一共3颗，每颗伤害1d4+1，共计3d4+3，伤害期望是10.5。</span></li><li><span>而在专精魔法飞弹（魔法飞弹的施法者等级加2）+&lt;初学者手套&gt;（戏法或者1环法术每颗伤害骰+1伤害）+增效超魔（法术每颗伤害骰+2伤害）+强能魔法（研究法师能力，法术施法者等级+2）以后：一共5颗（因为施法者等级5+4），每颗伤害1d4+4，共计5d4+20，伤害期望是37.5。</span></li><li><span>而这远远不是魔法飞弹的上限，在第二章有天命所归（造成额外10%的神力伤害）、&lt;低等强效超魔权杖&gt;、&lt;力场之锋&gt;（力场法术，每颗伤害骰+2伤害）以后，单颗伤害变成（1d4+6）×1.5×1.1，伤害期望为70。有正义烙印以后，每颗飞弹还会附加正义烙印的伤害，强效以后共计额外造成7.5倍正义烙印伤害（11级正义烙印相当于给飞弹额外再加了90多伤害）。</span></li><li><span>如果是天使道途，天堂宝剑+天堂雄狮+铲奸除恶+天命所归+&lt;力场之锋&gt;+初学者手套+强效增效极效，可以打出最高（9×4+1+18力场之锋+1初学者手套+2增效）×1.5强效×1.1天命所归×1.5铲奸除恶 = 144，一发能打5颗就是720伤害。而且是由于天堂宝剑有BUG不吃增效超魔和初学者手套（不过天堂雄狮的双倍天堂宝剑勉强可以弥补这部分伤害），不然伤害会更高。</span></li></ul><h3 id='法术伤害构成'><span>法术伤害构成</span></h3><p><strong><span>先举例一下法术的伤害到底有多高吧（目前有BUG，审判风暴上限只能到d10而不是d12，然后天堂宝剑增加的骰子不能增效，不然伤害会更高）：</span></strong></p><p><span>要问法术伤害最简单就叠到非常高的，那必须是天使道途合书以后的</span><strong><span>”强效极效增效审判风暴“</span></strong><span>。满状态伤害就有33（20级+9神话+1烈火织法者+3七罪法袍）×[10（极效超魔，d10取最大值）+2（增效超魔）]×1.5（强效）×1.5（铲除奸邪）×1.1（天命所归）+ 4（天堂宝剑+或然之缚）×10（极效超魔，d10取最大值）×1.5（强效）×1.5（铲除奸邪）×1.1（天命所归） = 1079，而且伤害不会被豁免减半，打BOSS见面就能瞬发一个（靠鞋子的瞬发），然后标准动作再放一个，一轮就有2000+的AOE伤害。</span></p><h4 id='伤害构成'><span>伤害构成</span></h4><ul><li><span>施法者等级：决定伤害骰的数量，很多法术有伤害骰数量上限。天堂宝剑可以增加法术的伤害骰数量（目前有BUG，增效不能加成被天堂宝剑增加的伤害骰）。</span></li><li><span>伤害骰：法术有个最基础的伤害骰，然后极效可以让伤害骰取最大值。金龙道途可以改法术伤害骰大小，从d6变成d8，d8变成d8+1（神话10才变成d10就不考虑了）。</span></li><li><span>每颗伤害骰额外伤害：增效超魔+2，恶魔道途爆燃魔相+N（2，5）；血脉+N（0，3）---对应的元素，元素注能法袍+2---对应的元素，元素杀戮革甲+1---四元素，奥法歼灭者法袍+1---四元素（这个需要主角有诡术师等级，第三章会送），四元素护符+1---四元素（这个目前没有获得办法），寒吼轻盾+1---寒冷，力场之锋+2---力场，真正统治者的七美德+2（DLC4第五章获得，找说书人合成）</span></li><li><span>法术伤害乘算因子：强效×1.5倍，易伤×1.5倍，天命所归×1.1倍，铲除奸邪×1.5倍，有攻击检定的法术可以重击×N（根据射线的倍率来，基础是2倍）</span></li><li><span>法术附伤，比如纵火狂之戒，马兰德的耻辱，&lt;燃火之物的呼唤&gt;法袍，&lt;诡诈烈焰&gt;手套</span></li><li><span>上面这些随便堆一下，法术伤害就有质变了。不考虑职业加成，法系如果走天使合书、灵使和恶魔道途，AOE法术的轮伤基本上都可以轻松突破1500+；巫妖道途，伤害轻松突破1000；金龙道途轻松突破800；</span></li></ul><h4 id='造成伤害的法术分类'><span>造成伤害的法术分类</span></h4><p><span>造成伤害的法术，基本上是以下4种类型（每个类型都分为是否需要过法术抗力，玩法师堆法穿跟玩肉搏堆AB一样是基本常识）</span></p><ul><li><strong><span>必中无减免型</span></strong><span>：无攻击检定、无豁免检定/豁免成功伤害不减半。比如魔法飞弹（会被护盾术免疫）、审判之矢、审判风暴、放血术、宴血术等，这种类型的法术伤害非常稳定，只需要想办法堆高法术伤害即可。</span></li><li><strong><span>非必中无减免型</span></strong><span>：有攻击检定、无豁免检定/豁免成功伤害不减半。比如雪球术、灼热射线、重挫冲击、地狱烈焰射线等射线（远程接触）法术，以及电爪、力场拳等接触法术，这类法术伤害也非常稳定，只需要额外堆高AB保证攻击成功命中敌人。（PS：</span><del><span>射线不消耗克敌机先而且射线是对抗接触防御（无视盔甲类和天生防御类加值），所以克敌+射线基本上保证射线的极高命中率</span></del><span>）</span></li><li><strong><span>必中有减免型</span></strong><span>：无攻击检定，豁免成功伤害减半/大幅减少/无效：大部分AOE伤害都是如此，典型常用AOE法术为火球术、可控火球术、炽焰击、闪电链、烈焰风暴、风暴束。也包括一些单体伤害法术，比如颤骨、灰飞烟灭等（一般不用这些单体的豁免成功伤害减少/无效的法术当主力法术）。这类法术需要堆高法术的豁免等级（DC）来保证伤害打满。</span></li><li><span>有攻击检定，豁免成功伤害减半/大幅减少/无效：这种法术比较少见，条件苛刻，比如解离术，基本上没啥人会用的。</span></li></ul><h3 id='每环常用的主力伤害法术'><span>每环常用的主力伤害法术</span></h3><p><span>注意要搭配增效、强效和极效超魔，然后感觉过不了能量抗性和免疫的，圣教军里合成的神器戒指灵魂之灾完美解决（全部伤害转为力场），都不用学什么巅峰元素。</span></p><p><span>说到法术伤害的时候，千万记得法术环位，等级和装备匹配，不要拿合书以后的审判风暴跟1环的魔法飞弹虚空对比。。。</span></p><ul><li><span>一环：魔法飞弹，雪球术/电爪</span></li><li><span>二环：灼热射线</span></li><li><span>三环：火球术</span></li><li><span>四环：炽焰击/可控火球术</span></li><li><span>五环：无</span></li><li><span>六环：地狱烈焰射线、闪电链</span></li><li><span>七环：烈焰风暴、酸液爆发</span></li><li><span>八环：风暴束</span></li><li><span>九环：无</span></li></ul><h4 id='序章第一章和第二章的伤害法术'><span>序章、第一章和第二章的伤害法术</span></h4><ul><li><span>一环法术有学法术专精和其他加CL手段的优先用魔法飞弹（堆伤害的办法写在上面了），没有法术专精的可以考虑雪球术---（搭配小烬的巫术---易伤，让敌人的能量抗性和免疫失效），打精英怪一般就用增效雪球术，5级配合初学者手套就有5d6+15 ≈ 33.5的伤害。第二章有天命所归和低等强效超魔权杖、低等极效超魔权杖，买了配合用。</span></li><li><span>二环法术灼热射线，第二章如果专精的话，9级可以达到11CL，对于魔能射手来说就算好法术了，11CL一共3发，增效以后每发4d6+8+1近程射击，配低等强效超魔权杖，天命所归，伤害为（4d6+9）×1.5×3×1.1 = 114，然后因为是法术打击，重击范围跟弩一样变成17-20（锐锋后），配合祈福和小幸运重击率变成50%，重击以后伤害期望变成228（如果是魔射，获得有神圣轻弩，这个灼热射线额外增加6d6 ≈ 21伤害）。就第二章来说这个伤害已经非常不错了。</span></li><li><span>三环法术火球术，大部分情况下是对抗集群使用，火球术伤害常规堆叠的办法，就是专精+增效/低等强效超魔权杖，5级法术大师可以打出10d6的火球术，搭配DLC2奖励&lt;夺命暴雪权杖&gt;转冰，集群对抗AOE法术有易伤/爆燃魔弱冰，可以打出10d6×1.5 ≈ 53的伤害期望，第二章有低等强效权杖也可以打出这个伤害期望。但是特化的BD可以让火球术在第二章实现伤害达到非常夸张的地步，比如6研究法师1混血术（双红龙），专精火球术，神话2巅峰火+神话1偏好超魔增效，这样第二章就可以实现10（d6+4）×1.5×1.1 ≈ 124的强效增效火球术。这一发下去，敌人豁免成功了也没血了，难度低的话可以当成核弹打击了。当然咯，这样加点除了炸的时候很爽，但是法术位很少，升环慢+掉CL，不推荐主角玩。</span></li></ul><h4 id='第三章的主力伤害法术'><span>第三章的主力伤害法术</span></h4><p><strong><span>注</span></strong><span>：</span></p><p><span>魔法飞弹，灼热射线，火球术，炽焰击/可控火球术，闪电链，地狱烈焰射线</span></p><p><span>以下都分为特化/常规伤害（自己根据玩法取中间值即可，不要考虑极端），火系伤害均搭配装备&lt;纵火狂之戒&gt;、&lt;马兰德的耻辱&gt;、四元素法术均搭配&lt;元素注能法袍&gt;+&lt;元素杀戮革甲&gt;（如果能穿中甲）。考虑到有的人没有DLC，天命所归的1.1倍伤害不计入，自己把最终伤害成1.1即可。也没考虑道途的加成，一般来说伤害只会少算不会多算。</span></p><p><strong><span>火球术</span></strong><span>：</span></p><ul><li><span>常规：仅搭配噬心浪欲极效，10×（6极效+2增效+2元素注能）=100伤害，因为伤害转污邪，不吃装备&lt;纵火狂之戒&gt;、&lt;马兰德的耻辱&gt;的伤害加成。打集群易伤×1.5。</span></li><li><span>特化：元素法师（火）+混血术（双红龙）+神话偏好超魔增效、巅峰元素（火）和偏好超魔强效+噬心浪欲极效，10×（6极效+2增效+2元素注能+2双红龙）×1.5+（3d6+5）装备附伤=196伤害；打集群易伤×1.5。</span></li></ul><p><strong><span>灼热射线</span></strong><span>（按照12级来算）：</span></p><ul><li><span>常规1：搭配低等强效超魔权杖，[4×（d6+2增效+2元素注能）+1近程射击]×1.5+（1d6+5+1近程射击）+（2d6+1近程射击）=65，一共三根射线，共计195。没有精通重击，重击率太低，不考虑。</span></li><li><span>常规2：纯职奥法暴徒+熟练偷袭者+搭配低等强效超魔权杖，[4×（d6+2元素注能）+1近程射击]×1.5+（1d6+5+1近程射击）+（2d6+1近程射击）+9d6=85，一共三根射线，共计255。没有精通重击，重击率太低，不考虑。</span></li><li><span>特化1：元素法师（火）+混血术（双红龙）+神话偏好超魔增效、巅峰元素（火）和偏好超魔强效+噬心浪欲极效，[4×（6+2增效+2元素注能+2双红龙）+1近程射击]×1.5+（1d6+5+1近程射击）+（2d6+1近程射击）=92，一共三根射线，共计276。没有精通重击，重击率太低，不考虑。</span></li><li><span>特化2：魔能射手+&lt;+3光能觅心轻弩&gt;+虔诚刀锋神圣公正附魔+巅峰元素（火）+癫狂灾瘟强效极效，[4×（6+2增效+2元素注能+1元素杀戮革甲）+1近程射击]×1.5+（1d6+5+1近程射击）+（2d6+1近程射击）+（1d8+2d6+2d6）×3 = 140，一共三根射线，共计420。20%重击率+3倍重击率（配合小幸运变成36%，再配合祈福变成50%），重击伤害348.5，三根共计1045。</span></li></ul><p><strong><span>炽焰击</span></strong><span>（目前有BUG，第二段伤害吃双倍增效，而且豁免成功伤害不减半）：</span></p><ul><li><span>常规：仅搭配噬心浪欲极效，15×（6极效+3增效+2元素注能）=165伤害，因为伤害转污邪，不吃装备&lt;纵火狂之戒&gt;、&lt;马兰德的耻辱&gt;的伤害加成。打集群易伤×1.5。有&lt;癫狂灾瘟&gt;强效极效后伤害变成248。</span></li><li><span>特化：元素法师（火）+混血术（双红龙）+神话偏好超魔增效、巅峰元素（火）和偏好超魔强效+噬心浪欲极效，15×（6极效+3增效+2元素注能+2双红龙）×1.5+（3d6+5）×2装备附伤=326伤害；打集群易伤×1.5。</span></li></ul><p><strong><span>闪电链（第三章增效闪电链在7环，13级才有，专精以后普通的按照15CL来算）</span></strong><span>：</span></p><ul><li><span>常规1：仅搭配噬心浪欲极效，15×（6极效+2增效+2元素注能）=150伤害；有&lt;癫狂灾瘟&gt;强效极效后伤害变成225。打集群易伤×1.5。</span></li><li><span>常规2：法术大师（法术聚能+4CL，学派能力超魔强效）+噬心浪欲极效，19×（6极效+2增效+2元素注能）×1.5=285伤害；打集群易伤×1.5。如果搭配灵动魔法，会打出两发闪电链，伤害×2，基本上都是一发清场。</span></li></ul><p><strong><span>地狱烈焰射线（第三章增效地狱烈焰射线在7环，13级才有，专精以后普通的按照15CL来算）</span></strong><span>：</span></p><ul><li><span>常规1：仅搭配噬心浪欲极效，30×（6极效+2增效+2元素注能）=300伤害；有&lt;癫狂灾瘟&gt;强效极效后伤害变成450。加上装备附伤大概多33点伤害。</span></li><li><span>常规2：法术大师（法术聚能+4CL，学派能力超魔强效）+噬心浪欲极效，45×（6极效+2增效+2元素注能）×1.5=675伤害；加上装备附伤大概多50点伤害。</span></li></ul><h3 id='主力伤害法术的最终伤害'><span>主力伤害法术的最终伤害</span></h3><p><strong><span>以后的部分就是第四章主力法术了，这个时候是玩法成型期，直接结合道途算20级神话9的成型伤害（不考虑血脉和职业加成，这里只会少算伤害不会多算的）。</span></strong></p><ul><li><p><strong><span>普通法术</span></strong></p><ul><li><strong><span>闪电链</span></strong><span>的上限是灵使道途：强效、增效、极效以后，20×（6+2+2+2）×1.5×1.1×2 = 792；如果考虑到闪电链伤害骰没上限的BUG，则这个伤害变成24×（6+2+2+2）×1.5×1.1×2 = 950。豁免成功以后伤害减半。</span></li><li><strong><span>风暴束</span></strong><span>的上限是恶魔道途/天使道途：强效、增效、极效以后，前者为20×（8+2+2+5+2）×1.5×1.1 = 627；后者为20×（8+2+2+2）×1.5×1.1×1.5 = 693，天堂宝剑额外附加48×1.5×1.1×1.5 = 119伤害。豁免成功以后伤害减半</span></li><li><strong><span>酸液爆发</span></strong><span>的上限同理是恶魔道途/天使道途：强效、增效、极效、延时以后，前者为20×（6+2+2+5+2）×1.5×1.1 = 561，持续4轮，共计总伤害×3，为1683；后者为20×（6+2+2+2）×1.5×1.1×1.5 = 594，持续4轮，共计总伤害×3，为1782，天堂宝剑额外附加40×1.5×1.1×1.5=99伤害，跳5次共计额外496伤害；豁免成功以后伤害减半。</span></li><li><strong><span>地狱烈焰射线</span></strong><span>的上限是诡计大师重击4倍射线+必定重击，后期诡诈烈焰给火易伤，还有元素狂潮和装备加成。预计伤害最高基本上是属于诡计大师，不考虑元素狂潮，随便就能造成稳定的3500+伤害了。</span></li></ul></li><li><p><strong><span>合书以后的道途法术</span></strong></p><ul><li><strong><span>宴血术/放血术</span></strong><span>：35×（6+2）×1.5×1.1 = 462</span></li><li><strong><span>负能爆发</span></strong><span>：35×10×1.5×1.1 = 578，这里是靠宗师之杖来强行强效（也可以说是利用BUG）。如果搭配噬星之寒的负能量易伤，则伤害×1.5倍，变成866，豁免成功以后伤害减半。</span></li><li><strong><span>审判之矢/审判风暴</span></strong><span>：33（20级+9神话+1烈火织法者+3七罪法袍）×[10（极效超魔，d10取最大值）+2（增效超魔）]×1.5（强效）×1.5（铲除奸邪）×1.1（天命所归）+ 4（天堂宝剑+或然之缚）×10（极效超魔，d10取最大值）×1.5（强效）×1.5（铲除奸邪）×1.1（天命所归） = 1079</span></li><li><strong><span>烈阳之眼</span></strong><span>：37×12×1.5×（1.5×1.1+1.5×1.1×1.5×1.1）/2 = 1456，豁免成功以后伤害减半。</span></li><li><strong><span>深渊风暴</span></strong><span>：目前有BUG，不吃爆燃魔相加成，不吃元素注能法袍加成，而且DC也比较低，还会伤害到施法者，基本上就是听个响。28×8×1.5×1.1+28×10×1.5×1.1×1.1 = 878，豁免成功以后伤害减半。</span></li></ul></li></ul><p><strong><span>最后提一句，道途法术里最强最好用的AOE伤害法术是天使道途的审判风暴。</span></strong><span>对应恶魔的深渊风暴简直就是吃了屎一样难受，法术居然能打到施法者，还有BUG吃不到燃爆魔相的伤害骰加成，要是这个法术没BUG还挺厉害的。</span></p><h2 id='施法者等级怎么堆'><span>施法者等级怎么堆</span></h2><p><span>施法者等级来源：施法者的职业等级+职业能力+BUFF+道途+专长/神话专长+装备</span></p><ul><li><span>施法者的职业等级：因为玩施法者基本上是纯职，所以一般这部分就是人物等级，上限是20【传奇道途可以到28】。</span></li><li><span>职业能力：奥能师/研究法师的【奥能源泉+强能魔法】+2，灵脉守卫的【脉络涌动】+1d4，法师大师的法术聚能+4</span></li><li><span>BUFF：说书人的知识+2【收集19张精灵笔记给说书人即可】，“《论恶魔的本质，贤希尔·王著》”+1惑控，料事如神卷轴+1预言（这个搭配识破命门还行，使用道具《召唤与咒法的二元论》以后有机会获得）</span></li><li><span>道途：天使/巫妖跟对应职业融合法术书以后施法者等级获得神话等级的加成（就是每级神话+1），巫妖道途还有光环给全队友+2CL，御衡者凝视给全队友+4CL，恶魔狂暴搭配&lt;或然之缚&gt;斗篷共计+5CL（可以通过魔相或者恶魔道途法术共享给队友），诡计大师巧用魔法装置1阶可以在使用魔法装置的时候施法者等级获得神话等级加成（就是每级神话+1）。</span></li><li><span>专长/神话专长：法术专精+2所选法术，学派掌握+1所选学派</span></li><li><span>装备1：七罪法袍+3【第四章DLC3】，烈火织法者+1【第五章葛雷博任务，击杀巴弗灭女儿即可】，心灵控制护目镜+2心智【迷宇最终奖励】，重塑头带+1变化【第四章万乐园购买，需要先完成万乐园任务】，灰烬制造者+2塑能【第二章麻风病的微笑，救下那个旅人，第四章到厄运酒馆即可获得】，疾风弯刀+1变化【第二章进攻眷泽城，三个钥匙才能开的秘门正前方直走，在人物左边的废墟上】，破晓花吻（邪恶）+2变化【第五章无间囚狱的小任务，分善良线和邪恶线】，魅影向导+3幻术【第四章活畜市场购买】，奥法储备斗篷+2【DLC1限定，主线没有；受到元素伤害就能触发，用于常驻轮级BUFF等】</span></li><li><span>装备2：图书馆长斗篷+4卷轴【第四章下城区到中城区的密道处宝箱】，专家腰带+1卷轴和药水【第二章开始的牧师处购买】</span></li><li><span>队友只要是20级满CL，就能常驻预言（识破命门）、幻术（高等隐形术）、变化（加速术、巨灵化身、战法转换和火焰烙印）和塑能系（神能）的轮级法术，至于防护（秩序护盾）和咒法系（金鹰之魂）则需要法术专精或者主角道途支持。</span></li><li><span>而主角只需要是20级满CL，就能常驻全系轮级法术（防护和咒法系比较慢，要等说书人的知识；惑控系的轮级法术梦境护幕则有知识奖励+1CL，会更早一点常驻）。</span></li></ul><p><span>卷轴专家目前大招配合七罪法袍、图书馆长斗篷和专家腰带，可以做到全卷轴28CL。配合DLC3教士卖的卷轴，基本上已经起飞了。高等解除魔法就靠卷轴来放，解个痛快。</span></p><h2 id='法术穿透怎么堆'><span>法术穿透怎么堆</span></h2><p><strong><span>玩法师如果还花费宝贵的神话专长去点神话法穿，简直是亏爆了，神话4才4法穿根本没收益，后期法穿早就溢出了。</span></strong></p><p><span>法术穿透 = 法术的施法者等级 +其他法术穿透调整值（buff + 装备 + 专长加成 + 种族加成 + 神话道途） +d20</span></p><ul><li><span>d20：守序领域必定取11（目前有BUG，秩序之手跟小幸运一样对全部D20检定生效），幸运领域双骰取高，诡计大师道途的捉弄命运必定20。</span></li><li><span>施法者等级：上面一节就有详细说明</span></li><li><span>BUFF：恶魔改造+2，灵使道途的奇迹颂诗+4，</span></li><li><span>装备：无阻法袍/决心法袍+2，奥法歼灭者法袍+4，战斗法师木棍/烈火织法者+4，纯净视域眼镜+1，圣徽+2，纵火狂之戒+2</span></li><li><span>专长：法术穿透+2，高等法术穿透+2，结盟施法者+2×N（N为队伍里点出结盟施法者的盟友数量）</span></li><li><span>种族：精灵魔力+2</span></li><li><span>道途：御衡者破敌（加法穿）/凝视（加的施法者等级），恶魔狂暴（加的施法者等级），卓越魔法（法穿检定双骰取高），巫妖/天使合并法术书（加的施法者等级），巫妖光环（加的施法者等级）等。</span></li></ul><p><strong><span>这里就举例14级法术大师无道途加成，打中期最高法抗的敌人&quot;取乐的黑暗&quot;</span></strong><span>：</span></p><p><span>37 = 14+4法术聚能+2精灵魔力+6结盟施法者+1纯净视域眼镜+2纵火狂之戒+2无阻法袍+2圣徽+4战斗法师木棍</span></p><p><span>刨除法术聚能，不想用BUG把结盟施法者换成普通的法术穿透，这样还有29法穿，配合队友给的小幸运/秩序之手，也是基本能稳定过”取乐的黑暗“的法术抗力。而且我们不可能没有神话道途的加成，只要不是诡计大师都不会特别缺法穿。而常规恶魔顶天了法抗也就25，打小怪有小怪的打法，打BOSS有打BOSS的打法。</span></p><h2 id='施法者职业锐评'><span>施法者职业锐评</span></h2><p><strong><span>通用标准</span></strong><span>：准备施法者＞自发施法者（不超魔=摆烂，超魔后法术需要整轮动作=便秘，法术可知少=只能选一系法术+部分BUFF，升环慢1级=各种卡手），先攻高的＞先攻低的，法表优秀的＞法表垃圾的，职业能力强的（比如预言学派、共通学派）＞职业能力弱的（比如奥法爆破师），自带制作卷轴的＞需要通过背景获取制作卷轴专长的，技能检定强的＞技能检定弱的。</span></p><h3 id='不考虑神话道途学派和领域默认选择最高优化版本）'><span>不考虑神话道途（学派和领域默认选择最高优化版本）</span></h3><p><span>T</span><sub><span>0</span></sub><span>：20法术大师（法术大师相当于共通学派法师的超级加强版）、20圣使、20法师（预言学派）、16/15法术大师4/5博学士、16/15圣使4/5博学士</span></p><p><span>剩下的懒得写了，先把最强的玩懂了，再玩剩下的自然就知道弱在哪里。如果是天使道途，则战斗+自然域（探寻者）先知也排得上T</span><sub><span>0</span></sub><span>（但不是作为单纯的施法者，而是其完美六边形+魔武双修的特性）。</span></p><h3 id='神话道途与施法者组合以后的强度'><span>神话道途与施法者组合以后的强度</span></h3><p><span>T</span><sub><span>0</span></sub><span>：天使道途（九环神术）＞巫妖道途（九环奥术）</span></p><p><span>T</span><sub><span>0</span></sub><span>的组合都是合书，在神话3就有质变，剩下的道途要根据神话等级和游戏章节来分，而且基本上要到神话4才有大的成长。</span></p><p><span>第三章（神话4）：灵使（神话4必然是出卓越魔法的）＞诡计大师（察觉2阶的专长“超魔（超正常法术）”，和神秘1阶）＞恶魔（神话4是必然出魅魔相的）＞御衡者（御衡者破敌是迅捷动作，跟反应施术有冲突，而且这个时候凝视的CL和DC只能二选一，且目前AOE法术不能附带破敌的解除魔法了；走御衡者前期还没有紫色石刀）</span></p><p><span>第四章（神话5-神话6）：灵使（神话6必然是出灵动魔法）＞恶魔（神话5出空奢魔相+霸烙魔相/遁影魔相+燃爆魔相；神话6出淫梦魔相）＞诡计大师＞御衡者</span></p><p><span>第五章：到这里基本上都是爽玩，每个前期道途接近无敌，就是看怎么爽罢了。四个后期道途的强度在极大程度上取决于所继承的前期道途。</span></p></div></div>
+</body>
+</html>
